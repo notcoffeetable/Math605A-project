@@ -1,0 +1,158 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+\usepackage[american]{babel}
+\usepackage{csquotes}
+\usepackage[style=apa,sortcites=true,sorting=nyt,backend=biber]{biblatex} 
+\DeclareLanguageMapping{american}{american-apa}%bibliography package
+
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
+
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+
+\usepackage{enumitem}
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+\bibliography{biblio}
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+\newtheoremstyle{break}
+  {\topsep}{\topsep}%
+  {\itshape}{}%
+  {\bfseries}{.}%
+  {\newline}{}%
+\theoremstyle{break}
+\newtheorem{lem}{Lemma}
+\newtheorem{defn}{Definition}
+\newtheorem{thm}{Theorem}
+\newtheorem{cor}{Corollary}
+\newtheorem{prop}{Proposition}
+\newtheorem{ex}{Example}
+\renewcommand\qedsymbol{//}
+\newtheorem{lma}{Lemma}
+\setenumerate[1]{label=\Roman*.}
+\setenumerate[2]{label=\Alph*.}
+\setenumerate[3]{label=\roman*.}
+\setenumerate[4]{label=\alph*.}
+
+\title{	
+\normalfont \normalsize 
+\textsc{Colorado State University Mathematics} \\ [25pt] % Your university, school and/or department name(s)
+%\horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+\huge Higher Ramification Groups \\ % The assignment title
+%\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{Dean Bisogno} % Your name
+
+\date{\normalsize\today} % Today's date or a custom date
+
+\begin{document}
+
+\maketitle % Print the title
+\section{Abstract}
+\section{Definitions and Notation}
+\subsection{Discrete Valuations}
+We borrow our definitions in this section from \cite{DnF}. 
+\begin{defn}[Discrete Valuations]
+A discrete valuation on a field $K$ is a surjective function $\nu_K: K^* \to \mathbb{Z}$ such that
+\begin{enumerate}
+\item $\nu_K(xy) = \nu(x) + \nu(y)$ for all $x,y\in K^X$.
+\item $\nu_K(x+y) \geq min\{\nu_K(x),\nu_K(y)\}$ for all $x,y\in K^X$ such that $x+y \not= 0$.
+\end{enumerate}
+Further, we call the subring $\{x \in K|\nu_K(x) \geq 0\} \cup \{0\}$ the valuation ring of $K$.
+\end{defn}
+\begin{defn}[Discrete Valuation Ring (D.V.R.)]
+If $R$ is an integral domain and $R$ is the valuation ring of the field of fractions on $R$, then we call $R$ a discrete valuation ring. The ring $R$ also has a local ring with unique maximal ideal $M=\{r \in R | \nu_K(x) > 0\}$.
+\end{defn}
+Note that in Math 566 we proved (exercise 26 section 7.1) that for any unit $u \in K^*$ that $\nu_K(u)=0$. Thus it follows that $R \setminus M$ is the set of invertible elements of $R$.
+\begin{defn}[Uniformizing Parameter]
+If $R$ is a D.V.R. of $K$ via $\nu_K$, then an element $t\in R$ such that $\nu_K(t) = 1$ us a uniformizing parameter for R. Theorem 7, section 16.2 in \cite{DnF} shows that $t$ is unique and generates the unique maximal ideal of $R$.
+\end{defn}
+
+\subsection{Field Completion}
+With a valuation $\nu_K$ on a field $K$ then for any real number $a\in(0,1)$ we can induce an absolute value on $K$ by
+
+\[ ||x|| =  \begin{cases} 
+      a^{\nu_K(x)} & x \not= 0 \\
+      0 & x = 0 \\
+   \end{cases}
+\]
+which satisfies the usual conditions of a metric as outlined by \cite{Serre}. A topology is then induced on $K$ via the absolute value metric, and we can denote the completion of $K$ with respect to the valuation $\nu_K$ by $K_\nu$. Note also that the metrics induced by different choices of $a$ are topologically equivalent, so the completion is dependent only on $\nu_K$. Further, $\nu_K$ extends in the completion of $K$ to a discrete valuation (which we will continue to call $\nu_K$) on $K_\nu$ (\cite{Serre}).
+
+\subsection{Higher Ramification Groups}
+Consider now a finite Galois extension $L|K$ with Galois group $G$, and associated discrete valuations $\nu_K$ and $\nu_L$ and valuation rings $O_L$, and $O_K$.
+\begin{defn}[Higher Ramification Groups]
+For every real number $i \geq -1$ we define the $i^{th}$ ramification group of $L|K$ by
+$$
+G_i = G_i(L|K) = \{\sigma \in G | \nu_L(\sigma(a)-a)\geq i+1\;\forall a \in O_L\}.
+$$
+\end{defn}
+
+\begin{prop}
+For any $a \in O_L$ and $\sigma \in G$, $\nu_L(\sigma(a) - a) \geq i+1$ if and only if  $\sigma(a) \cong a mod P_L^{k+1}$.
+\end{prop}
+
+\begin{prop}
+The first two ramification groups are $G_{-1} = G$ and $G_{0}=I$.
+\end{prop}
+
+\section{The Upper Numbering and Ramification Jump}
+
+\begin{defn}[Upper Numbering the Higher Ramification groups]
+Consider the function
+$$
+t = \varphi(s) = \int_{0}^{s} \frac{dt}{[G_0 : G_t]}
+$$
+Which has inverse map $\psi$.
+Then $G^t(L|K) = G_s(L|K)$ where $s=\psi(t)$. 
+\end{defn}
+\begin{defn}[Ramification Jump]
+If for any $\epsilon >0$ $G^{t}(L|K) \not=G^{t+\epsilon}(L|K)$ then we call $t$ a ramification jump.
+\end{defn}
+\begin{thm}[Hasse-Arf]
+For a finite abelian extension $L|K$, the jumps of the filtration $\{G^{i}(L|K)\}_{i \geq -1}$ are rational integers.
+\end{thm}
+
+\nocite{*}
+\printbibliography
+
+
+\end{document}

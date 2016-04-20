@@ -1,0 +1,42 @@
+\documentclass{article}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{outlines}
+\usepackage{enumitem}
+
+\begin{document}
+\title{An Overview of Riemann-Hurwitz in Positive Characteristic}
+\author{Dean Bisogno}
+\maketitle
+\setenumerate[1]{label=\Roman*.}
+\setenumerate[2]{label=\Alph*.}
+\setenumerate[3]{label=\roman*.}
+\setenumerate[4]{label=\alph*.}
+\begin{outline}[enumerate]
+   \1 A Reminder of Riemann-Hurwitz from characteristic 0
+   		\2 $2g_{X} - 2 = d(2g_{Y} -2) + \sum_{x \in \mathcal{X}} \nu_b$ 
+   			\3 Where $g_x$ and $g_y$ are the genuses of the the respective spaces, $d$ the degree of the covering map $X \to Y$, $\nu_x = e_x - 1$ the differential length of $x$ and $e_x$ the ramification index of $x$.
+   \1 Now think about algebraically closed field of characteristic p. An example that still works.
+   		\2 An Artin-Schreier Curve: $X^{\circ}_{p,t}: x^p - x -y^t$ where $p \not | t$.
+   		\2 For $\pi_{x,p,t}: X^{\circ}_{p,t} \to \mathbb{A}^{1}_{k}$ projection on $x$, ramified only over the $p$ points $(x,0)$, each with $\nu_{(x,0)} = t-1$.
+   		\2 Can calculate a genus for $X$ with Riemann-Hurwitz, and we get $\frac{(p-1)(t-1)}{2}$. Can verify that by checking geometric genus $dim(H^{0}(X,\Omega^{1})$. Can find basis $\{y^b x^r dy | r \geq 0, b \geq 0, bp + rt \geq (p - 1)(t - 1) -2\}$
+   \1 A Case that breaks
+         \2 For $\pi_{y,p,t}: X_{p,t} \to \mathbb{P}^{1}_{k}$ (projection on y) only ramified over $P_{\infty}$ with ramification index $p$.
+         \2 Classical Riemann-Hurwitz: $2g_X - 2 = p(-2)+(p-1)$ yields a negative genus!
+         \2 Need to be careful in the case $p | e_x$
+   \1 Wild Riemann-Hurwitz
+   	     \2 For a non-constant, separable, Galois cover $f:X \to Y$ of smooth projective curves over field $k$ of characteristic $p$. Let $e_x$ be the ramification index of $f$ at a point $x$. And if $p \not | e_x$ then $\nu_x = e_x -1$. If $p | e_x$ then there exists a ramification filtration of the inertia group $I$ at $x$ such that $\nu_x = \sum_{i=0}^{\infty}(|I_i| - 1)$. Then
+   	     $$
+   		 2g_{X} - 2 = d(2g_{Y} -2) + \sum_{x \in \mathcal{X}} \nu_b 
+   	     $$
+   	     \2 If $e_x = p$ then $\nu_x = (p-1)(t_x + 1)$ where $t_x$ is the ramification jump. Understanding the ramification jump requires higher ramification groups. The ramification jumps occur where the filtration of the ramification groups in upper numbering yields strict inclusion.
+           \2 Higher ramification groups.
+               \3 For Galois extension $L$ or $K$ with Galois groups $G$, where $K$ is complete with respect to discrete valuation $\nu_K$ and $L$ has the discrete valuation induced by $\nu_K$ (there are some normalization conditions on the discrete valuations). Then we can define the $i^{th}$ ramification group by
+               $$
+               I_i = \{\sigma \text{ in } G \text{ | }\nu_L(\sigma(a) - a) \geq i + 1 \; \forall a \in \mathcal{O}_L \}.
+               $$
+            \2 We see that there is a natural filtration of the higher ramification groups. The with the inertia group corresponding to $I_0$. There is another chain  of inclusions for the higher ramification groups in the upper numbering, which is likely beyond the scope of the presentation.
+   \1 Finish ``a case that breaks,'' show that $t_{P_{\infty}} = 1$, then Wild-Riemann Hurwitz calculates the correct genus
+   \1 If time is permitting or if we condense the beginning, perhaps we can looks at a case where $p| e_x$ and $p \not = e_x$.
+\end{outline}
+\end{document}
