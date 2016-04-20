@@ -104,7 +104,7 @@ If $R$ is an integral domain and $R$ is the valuation ring of the field of fract
 \end{defn}
 Note that in Math 566 we proved (exercise 26 section 7.1) that for any unit $u \in K^*$ that $\nu_K(u)=0$. Thus it follows that $R \setminus M$ is the set of invertible elements of $R$.
 \begin{defn}[Uniformizing Parameter]
-If $R$ is a D.V.R. of $K$ via $\nu_K$, then an element $t\in R$ such that $\nu_K(t) = 1$ us a uniformizing parameter for R. Theorem 7, section 16.2 in \cite{DnF} shows that $t$ is unique and generates the unique maximal ideal of $R$.
+If $R$ is a D.V.R. of $K$ via $\nu_K$, then an element $t\in R$ such that $\nu_K(t) = 1$ is a uniformizing parameter for R. Theorem 7, section 16.2 in \cite{DnF} shows that $t$ is unique (up to multiplication by a unit) and generates the unique maximal ideal of $R$.
 \end{defn}
 
 \subsection{Field Completion}
@@ -120,18 +120,24 @@ which satisfies the usual conditions of a metric as outlined by \cite{Serre}. A 
 \subsection{Higher Ramification Groups}
 Consider now a finite Galois extension $L|K$ with Galois group $G$, and associated discrete valuations $\nu_K$ and $\nu_L$ and valuation rings $O_L$, and $O_K$.
 \begin{defn}[Higher Ramification Groups]
-For every real number $i \geq -1$ we define the $i^{th}$ ramification group of $L|K$ by
+For every real number $i > -1$ we define the $i^{th}$ ramification group of $L|K$ by
 $$
-G_i = G_i(L|K) = \{\sigma \in G | \nu_L(\sigma(a)-a)\geq i+1\;\forall a \in O_L\}.
+G_i = G_i(L|K) = \{\sigma \in G | \nu_L(\sigma(a)-a)\geq i+1 \;\forall a \in O_L\}.
 $$
 \end{defn}
 
-\begin{prop}
-For any $a \in O_L$ and $\sigma \in G$, $\nu_L(\sigma(a) - a) \geq i+1$ if and only if  $\sigma(a) \cong a mod P_L^{k+1}$.
-\end{prop}
+Clearly this induces the following filtration on G:
+$$
+\{G_i(L|K)\}_{i\geq -1} = G_-1 \supseteq G_0 \supseteq G_1 \supseteq \ldots
+$$
 
 \begin{prop}
-The first two ramification groups are $G_{-1} = G$ and $G_{0}=I$.
+For any $a \in O_L$ and $\sigma \in G$, $\nu_L(\sigma(a) - a) \geq i+1$ if and only if  $\sigma(a) \cong a \; mod \; P_L^{i+1}$.
+\end{prop}
+
+
+\begin{prop}
+The first two ramification groups are $G_{0} = G$ and $G_{1}=I$.
 \end{prop}
 
 \section{The Upper Numbering and Ramification Jump}
@@ -139,18 +145,26 @@ The first two ramification groups are $G_{-1} = G$ and $G_{0}=I$.
 \begin{defn}[Upper Numbering the Higher Ramification groups]
 Consider the function
 $$
-t = \varphi(s) = \int_{0}^{s} \frac{dt}{[G_0 : G_t]}
+t = \varphi(s) = \int_{0}^{s} \frac{dx}{[G_0 : G_x]}
 $$
-Which has inverse map $\psi$.
-Then $G^t(L|K) = G_s(L|K)$ where $s=\psi(t)$. 
+called the Herbrand function which has inverse map $\psi$.
+Then for any real $s \geq -1$ let $G_s = G_{\lceil s \rceil}$ and renumber the ramification groups by $G^t(L|K) = G_s(L|K)$ where $s=\psi(t)$. 
 \end{defn}
 \begin{defn}[Ramification Jump]
-If for any $\epsilon >0$ $G^{t}(L|K) \not=G^{t+\epsilon}(L|K)$ then we call $t$ a ramification jump.
+If $G^{t}(L|K) \not=G^{t+\epsilon}(L|K)$ for any $\epsilon \geq 0$ then we call $t$ a ramification jump.
 \end{defn}
 \begin{thm}[Hasse-Arf]
 For a finite abelian extension $L|K$, the jumps of the filtration $\{G^{i}(L|K)\}_{i \geq -1}$ are rational integers.
 \end{thm}
+\begin{ex}
+\end{ex}
 
+\subsection{Application to Wild Riemann-Hurwitz}
+We can rephrase Riemann-Hurwitz such that if field $\mathbb{F}$ has characteristic $p$ and $p|e$ where $e$ is the ramification index of a point under a degree $d$ covering map $\phi:X \to Y$ of curves over $F$
+Then
+$$
+2g_Y -2 = d(2g_X -2) + \sum_{x\in X} \sum^{\infty}_{i=0}|G_i(x)| -1
+$$
 \nocite{*}
 \printbibliography
 
