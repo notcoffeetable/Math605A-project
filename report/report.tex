@@ -91,74 +91,72 @@
 Studying higher ramification groups immediately depends on some key ideas from valuation theory. With that in mind we hope to layout the essential results from valuation theory before proceeding to the subject of this paper. Higher ramification groups arise when studying extensions of fields, and the ramification of primes in the base field. This in particular appears when studying the genus or fundamental group of spaces. From Riemann-Hurwitz we can calculate the genus of a space if we know the degree of the appropriate cover or extension, and ramification of such a cover. In well behaved situations, the ramification information can be known independently or just read off from the ramification index. But in more interesting situations (such as when the characteristic of your base field divides the ramification index), we need to inspect the order of higher ramification group to correct our ramification index. Another application of higher ramification groups is to study the subgroup structure of a Galois group, as the higher inertia groups will all be subgroups, and particular inertia groups will yield information about sylow p-subgroups of the Galois group in question. We hope to understand at a broad level what higher ramification groups are, and investigate a couple examples of their use.
 \section{Preliminaries}
 \subsection{Valuations}
-We borrow our definitions in this section from \cite{Neukirch}. 
-\begin{defn}[Valuations]
-A valuation on a field $K$ is a function $\nu_K: K \to \mathbb{R}$ such that
-\begin{enumerate}
-\item $\nu_K(x) \geq 0$, and $\nu_K(x)= 0 \Leftrightarrow x =0$
-\item $\nu_K(xy) = \nu(x)\nu(y)$.
-\item $\nu_K(x+y) \leq \nu_K(x) + \nu_K(y)$.
-\end{enumerate}
-\end{defn}
-\begin{defn}[Nonarchimedean]
-If $\nu_K(n)$ is bounded for all $n \in \mathbb{N}$ then we call $\nu_K$ nonarchimedean. Otherwise it is archimedean.
-\end{defn}
-
-Proposition 3.6 in \cite{Neukirch} shows that $\nu_K$ is nonarchimedean if and only if it satisfies $\nu_{K}(x+y) \leq max\{\nu_K(x),\nu_K(y)\}$. This is commonly incorporated in the definition of a discrete valuation as in \cite{DnF}. 
-\begin{proof}
-
-$(\Leftarrow)$ The reverse direction is straight forward. We just notice 
-$$\nu_K(n)=\nu_K(1+\ldots+1) \leq 1\; \forall n\in\mathbb{N}.$$
-
-$(\Rightarrow)$ Now, $\nu_K(n) \leq N$ for all $n\in\mathbb{N}$ for some $N \in \mathbb{N}$. Then for arbitrary $x,y\in K$, without loss of generality, consider $\nu_K(x) \geq \nu_K(y)$. Choose $l \geq 0$, so we get $\nu_K(x)^{l}\nu_K(y)^{n-l} \leq \nu_K(x)$. Now applying binomial formula we see that
-$$
-	\nu_K(x+y)^{n} \leq \sum_{l=0}^{n} \nu_K({{n}\choose{l}}) \nu_K(x)^l \nu_K(y)^{n-l} \leq N^{}(n+1)(\nu_K(x))^n
-$$
-taking the $n^{th}$ root of both sides yields
-$$
-\nu_K(x+y) \leq N^{\frac{1}{n}}(1+n)^{\frac{1}{n}} \nu_K(x) = N^{\frac{1}{n}}(1+n)^{\frac{1}{n}} max\{\nu_K(x), \nu_K(y) \}
-$$
-
-The result then follows if we let $n \to \infty$.
-\end{proof}
-
-Valuations are particularly useful when studying number fields because of the following proposition
-\begin{prop}[\cite{Serre}]
-Every valuation of $\mathbb{Q}$ is equivalent to one of $|\cdot|_p$ (the nonarchimedean valuations) or $|\cdot|_\infty$ (the archmidean valuations).
-\end{prop}
-
-
+We will primarily deal with discrete valuations, though
 \begin{defn}[Discrete Valuation Ring (D.V.R.)]
 A discrete valuation ring is a principal ideal domain $O$ with a unique maximal ideal $p \not= 0$.
 \end{defn}
 \begin{defn}[Uniformizing Parameter]
-If $O$ is a D.V.R. of $K$ via $\nu_K$, then an element $\pi \in R$ such that $\nu_K(\pi) = 1$ is a uniformizing parameter for $O$. Theorem 7, section 16.2 in (\cite{DnF}) shows that $\pi$ is unique (up to multiplication by a unit) and generates the unique maximal ideal of $O$.
+Let $\mathfrak{p}$ be the unique maximal ideal of D.V.R. $O$. Since $O$ is a PID, there exists a prime $\pi$ in $O$ such that $\mathfrak{p}=(\pi)$. We call $\pi$ a uniformizing parameter.
 \end{defn}
+Theorem 7, section 16.2 in (\cite{DnF}) shows that $\pi$ is unique (up to multiplication by a unit) and generates the unique maximal ideal of $O$. Further in problem 26, in section 7.1 of \cite{DnF} (which we proved in math 566) we showed that $O \setminus \mathfrak{p}$ is the set of units in $O$. Then for any $a\in O\setminus \{0\}$ we know that $(a)$ is an ideal of $O$. We know $(a)$ is a nonzero ideal of $O$ and because $(\pi)$ is maximal, and in local ring $O$, there exists some $n\in \mathbb{Z}$ such that $(a) = (\pi)^n$. Notice if $a$ is a unit, then $n=0$ because $<a>=O$. 
+\begin{defn}[Discrete Valuation]
+The exponent $n$ used above is the valuation of $a$ denoted $v_\mathfrak{p}(a)$, it is a function $v_\mathfrak{p}:K^* \to \mathbb{Z}$ where $K$ is the field of fractions of $O$. We can extend $v_\mathfrak{p}$ to $K$ by setting $v_\mathfrak{p}(0) = \infty$. Further $v_\mathfrak{p}$ satisfies the following
+\begin{enumerate}
+\item $v_\mathfrak{p}(ab)=v_\mathfrak{p}(a) + v_\mathfrak{p}(b)$.
+\item $v_\mathfrak{p}(a+b) \geq min\{v_\mathfrak{p}(a),v_\mathfrak{p}(b) \}$.
+\end{enumerate}
+\end{defn}
+There are also valuations which are not discrete, and we can classify all valuations as either archimedean or nonarchimedean. We call a valuation $v$ nonarchimedean if $v(n)$ is bounded for every $n\in \mathbb{N}$. Proposition 3.6 in \cite{Neukirch} is often incorporated in the definition of discrete valuations, as every discrete valuation is nonarchimedean.
+\begin{prop}
+ A valuaion $v(x)$ is nonarchimedean if and only if it satisfies $v(x+y) \leq max\{v(x),v(y)\}$.
+\end{prop}
+\begin{proof}
+$(\Leftarrow)$ The reverse direction is straight forward. We just notice 
+$$v(n)=v(1+\ldots+1) \leq 1\; \forall n\in\mathbb{N}.$$
 
-For a finite Galois extension $L|K$ with with valuation rings $O_L$ and $O_L$, and prime $P_K\in A_K$, then $P_K A_L$ is a proper ideal in $A_L$. Since $A_L$ is local, then $P_K A_L \subset P_L$ the unique maximal ideal of $A_L$. Because all ideal in $A_L$ are some power of $P_L$, this means that $P_K A_L = P_L^e$ for some integer $e$.
+$(\Rightarrow)$ Now, $v(n) \leq N$ for all $n\in\mathbb{N}$ for some $N \in \mathbb{N}$. Then for arbitrary $x,y\in K$, without loss of generality, consider $v(x) \geq v(y)$. Choose $l \geq 0$, so we get $v(x)^{l}v(y)^{n-l} \leq v(x)$. Now applying binomial formula we see that
+$$
+	v(x+y)^{n} \leq \sum_{l=0}^{n} v\tbinom{n}{l} v(x)^l v(y)^{n-l} \leq N^{}(n+1)(v(x))^n
+$$
+taking the $n^{th}$ root of both sides yields
+$$
+v(x+y) \leq N^{\frac{1}{n}}(1+n)^{\frac{1}{n}} v(x) = N^{\frac{1}{n}}(1+n)^{\frac{1}{n}} max\{v(x), v(y) \}
+$$
+
+The result then follows if we let $n \to \infty$. We can conclude then that for any discrete valuation (which is nonarchimedean) $v(x+y) \leq max \{v(x),v(y) \}$.
+\end{proof}
+
+Valuations are particularly useful when studying number fields because of the following propositions
+\begin{prop}[\cite{Neukirch}]
+Let $O$ be a noetherian integral domain. $O$ is a Dedekind domain if and only if, for all prime ideals $\mathfrak{p} \not= 0$, the localizations $O_\mathfrak{p}$ are discrete valuation rings.
+\end{prop}
+\begin{prop}[\cite{Neukirch}]
+Every valuation of $\mathbb{Q}$ is equivalent to one of $\nu_p(x)$ (the nonarchimedean valuations) or $\nu_\infty(x)$ (the archimedean valuations).
+\end{prop}
 
 \subsection{Field Completion}
-With a valuation $\nu_K$ on a field $K$ then for any real number $a\in(0,1)$ we can induce an absolute value on $K$ by
+With a valuation $\nu$ on a field $K$ then for any real number $a\in(0,1)$ we can induce an absolute value on $K$ by
 
 \[ ||x|| =  \begin{cases} 
-      a^{\nu_K(x)} & x \not= 0 \\
+      a^{\nu(x)} & x \not= 0 \\
       0 & x = 0 \\
    \end{cases}
 \]
-which satisfies the usual conditions of a metric as outlined by (\cite{Serre}). A topology is then induced on $K$ via the absolute value metric, and we can denote the completion of $K$ with respect to the valuation $\nu_K$ by $K_\nu$. Note also that the metrics induced by different choices of $a$ are topologically equivalent, so the completion is dependent only on $\nu_K$. Further, $\nu_K$ extends in the completion of $K$ to a discrete valuation (which we will continue to call $\nu_K$) on $K_\nu$ (\cite{Serre}).
+which satisfies the usual conditions of a metric as outlined by. A topology is then induced on $K$ via the absolute value metric, and we can denote the completion of $K$ with respect to the valuation $\nu$ by $K_\nu$. Note also that the metrics induced by different choices of $a$ are topologically equivalent, so the completion is dependent only on $\nu$. Further, $\nu$ extends in the completion of $K$ to a discrete valuation (which we will continue to call $\nu$) on $K_\nu$ (\cite{Serre}).
 
 \section{Higher Ramification Groups}
-Consider now a finite Galois extension $L|K$ with Galois group $G$, and associated discrete valuations $\nu_K$ and $\omega_L$ with uniformizing parameters $\pi_L$ and $\pi_K$.
+Consider now a finite Galois extension $L|K$ with Galois group $\Gamma$, associated discrete valuations $\omega$ on $L$ and $\nu$ on $K$ with uniformizing parameters $\pi_L$ and $\pi_K$ respectively, and integer rings $O_L$ and $O_K$.
 
-\begin{defn}[Higher Ramification Groups]
+Recall that 
+\begin{defn}[Higher Ramification Groups, \cite{Serre}]
 For every real number $i > -1$ we define the $i^{th}$ ramification group of $L|K$ by
 $$
-G_i = G_i(L|K) = \{\sigma \in G | \nu_L(\sigma(a)-a)\geq i+1 \;\forall a \in O_L\}.
+G_i = G_i(L|K) = \{\sigma \in \Gamma | \omega(\sigma(a)-a)\geq i+1 \;\forall a \in O_L\}.
 $$
 \end{defn}
-
+The following is a proposition which helps characterize the higher ramification groups
 \begin{prop}
-For any $a \in O_L$ and $\sigma \in G$, $\nu_L(\sigma(a) - a) \geq i+1$ if and only if  $\sigma(a) \cong a \; mod \; \pi_L^{i+1}$.
+For any $a \in O_L$ and $\sigma \in G$, $\omega(\sigma(a) - a) \geq i+1$ if and only if  $\sigma(a) \cong a \; mod \; <\pi_L>^{i+1}$.
 \end{prop}
 \begin{proof}
 
@@ -166,7 +164,7 @@ For any $a \in O_L$ and $\sigma \in G$, $\nu_L(\sigma(a) - a) \geq i+1$ if and o
 $$
 \nu_L(\sigma(a)-a) \geq i+1 \implies \sigma(a)-a = \pi_L^(t)\frac{a}{b}
 $$
-where $t \geq i+1$ and $a,b,\pi_L\in O_L$ all relatively prime. The above then implies $\sigma(a)-a \cong 0 \; mod \; \pi_L^{i+1}$.
+where $t \geq i+1$ and $a,b,\pi_L\in O_L$ all relatively prime. The above then implies $\sigma(a)-a \cong 0 \; mod \; <\pi_L>^{i+1}$.
 
 ($\Leftarrow$) $$\sigma(a)-a \cong 0 \; mod \; \pi_L^{i+1} \implies \sigma(a)-a = \pi_L^{t}\frac{a}{b}$$
 with the same restrictions as above. It follows then that $\nu_L(\sigma(a)-a) \geq i+1$.
@@ -175,7 +173,6 @@ Clearly this induces the following filtration on G:
 $$
 \{G_i(L|K)\}_{i\geq -1} = G_{-1} \supseteq G_0 \supseteq G_1 \supseteq \ldots
 $$
-
 
 
 \begin{prop}
