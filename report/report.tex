@@ -134,6 +134,10 @@ Let $O$ be a noetherian integral domain. $O$ is a Dedekind domain if and only if
 Every valuation of $\mathbb{Q}$ is equivalent to one of $\nu_p(x)$ (the nonarchimedean valuations) or $\nu_\infty(x)$ (the archimedean valuations).
 \end{prop}
 
+\begin{defn}[Prolongation of a valuation]
+If $A \subset B$ are rings with $B$ integral over $A$, $\mathfrak{p}$ a prime in $A$, and $\mathfrak{q}$ prime in $B$ dividing $\mathfrak{p}$ with ramification index $e_\mathfrak{q}$ then $v_\mathfrak{q}(x)=e_\mathfrak{q}v_\mathfrak{p}(x)$ is a prolongation of $v_\mathfrak{p}$ with index $e_\mathfrak{q}$ (\cite{Serre}).
+\end{defn}
+
 \subsection{Field Completion}
 With a valuation $\nu$ on a field $K$ then for any real number $a\in(0,1)$ we can induce an absolute value on $K$ by
 
@@ -156,7 +160,7 @@ $$
 \end{defn}
 The following is a proposition which helps characterize the higher ramification groups
 \begin{prop}
-For any $a \in O_L$ and $\sigma \in G$, $\omega(\sigma(a) - a) \geq i+1$ if and only if  $\sigma(a) \cong a \; mod \; <\pi_L>^{i+1}$.
+For any $a \in O_L$ and $\sigma \in G$, $\omega(\sigma(a) - a) \geq i+1$ if and only if  $\sigma(a) \equiv a \; mod \; <\pi_L>^{i+1}$.
 \end{prop}
 \begin{proof}
 
@@ -164,9 +168,9 @@ For any $a \in O_L$ and $\sigma \in G$, $\omega(\sigma(a) - a) \geq i+1$ if and 
 $$
 \nu_L(\sigma(a)-a) \geq i+1 \implies \sigma(a)-a = \pi_L^(t)\frac{a}{b}
 $$
-where $t \geq i+1$ and $a,b,\pi_L\in O_L$ all relatively prime. The above then implies $\sigma(a)-a \cong 0 \; mod \; <\pi_L>^{i+1}$.
+where $t \geq i+1$ and $a,b,\pi_L\in O_L$ all relatively prime. The above then implies $\sigma(a)-a \equiv 0 \; mod \; <\pi_L>^{i+1}$.
 
-($\Leftarrow$) $$\sigma(a)-a \cong 0 \; mod \; \pi_L^{i+1} \implies \sigma(a)-a = \pi_L^{t}\frac{a}{b}$$
+($\Leftarrow$) $$\sigma(a)-a \equiv 0 \; mod \; \pi_L^{i+1} \implies \sigma(a)-a = \pi_L^{t}\frac{a}{b}$$
 with the same restrictions as above. It follows then that $\nu_L(\sigma(a)-a) \geq i+1$.
 \end{proof}
 Clearly this induces the following filtration on G:
@@ -177,6 +181,10 @@ $$
 
 \begin{prop}
 The first two ramification groups are $G_{0} = G$ and $G_{1}=I$.
+\end{prop}
+
+\begin{prop}
+For $L|K$ is Galois with group $\Gamma$, $\nu_\mathfrak{p}(x)$ a valuation on $K$ and $\omega_\mathfrak{q}(x)$ a prolongation of $\nu_\mathfrak{p}$, let $\widehat{L}$,$\widehat{K}$ be the completions of $L$ and $K$ with respect to $\omega_\mathfrak{q}$ and $\nu_\mathfrak{p}$ respectively. If $D(L|K)$ is the decomposition group of $\mathfrak{q}$ over $\mathfrak{p}$, then $\widehat{L}|\widehat{K}$ is Galois with Galois group $D(L|K)$.
 \end{prop}
 
 \section{The Upper Numbering and Ramification Jump}
@@ -192,18 +200,56 @@ Then for any real $s \geq -1$ let $G_s = G_{\lceil s \rceil}$ and renumber the r
 \begin{defn}[Ramification Jump]
 If $G^{t}(L|K) \not=G^{t+\epsilon}(L|K)$ for any $\epsilon \geq 0$ then we call $t$ a ramification jump.
 \end{defn}
+
 \begin{thm}[Hasse-Arf]
 For a finite abelian extension $L|K$, the jumps of the filtration $\{G^{i}(L|K)\}_{i \geq -1}$ are rational integers.
 \end{thm}
+Serre gives a useful interpretation of the Hasse-Arf theorem, namely that if $G_i \not= G_{i+1}$ then $\varphi(i)$ is an integer. We can use this in the following example (\cite{Serre}).
+
 \begin{ex}
+Suppose $G$ is a cyclic group of order $p^n$ where $p$ is the characteristic of $\widehat{K}$. Let $G(i)$ be the subgroup of $G$ with order $p^{n-i}$. Then there exist integers $i_0, \ldots,i_{n-1}$ such that we can identify all ramification groups as follows:
+$$G_0 = G_{i_0} = G = G^0 = G^{i_0}$$
+$$G_{{i_0}+1} = \ldots = G_{{i_0}+pi_1} = G(1) = G^{i_0+1} = \ldots = G^{i_0 + i_1}$$
+$$G_{{i_0}+pi_1+1} = \ldots = G_{{i_0}+pi_1+p^2 i_2} = G(2) = G^{i_0+i_1+1} = \ldots = G^{i_0 + i_1+i_2}$$
+$$\vdots$$
+$$G_{i_0+pi_1+p^2 i_2 + \cdots + p^{n-1}i_{n-1} +1}={1}=G^{i_0+\cdots+i_{n-1}+1}.$$
 \end{ex}
 
-\subsection{Application to Wild Riemann-Hurwitz}
-We can rephrase Riemann-Hurwitz such that if field $\mathbb{F}$ has characteristic $p$ and $p|e$ where $e$ is the ramification index of a point under a degree $d$ covering map $\phi:X \to Y$ of curves over $F$
-Then
+\section{Applications}
+\subsection{Cyclotomic Extensions of $\mathbb{Q}_p$}
+In this example we consider the p-adic completion of $\mathbb{Q}$ with respect to a valuation (and associated metric) $\nu_p$. Let $n=p^m$, and $\zeta$ be a primitive $n^{th}$ root of unity and the extension $\mathbb{Q}_p(\zeta)|\mathbb{Q}_p$ with Galois group $G$. We recall that $[\mathbb{Q}_p(\zeta):\mathbb{Q}_p]=\phi(n)=(p-1)p^{m-1}$ and $G\cong (\mathbb{Z}/n)^*$. 
+
+Now, if $0 \leq v \leq m$ then let $G^v$ be the subgroup of $G$ isomorphic to the subgroup $H \subset (\mathbb{Z}/n)^*$ such that $a \equiv 1\;mod\;p^v$ for every $a\in H$. Since $Gal(\mathbb{Q}_p(\zeta_{p^v})|\mathbb{Q}_p) \cong (\mathbb{Z}/p^v)^*$ we can see that $Gal(\mathbb{Q}_p(\zeta_{p^m})|\mathbb{Q}_p(\zeta_{p^v})) \cong G^v$. Using this fact we can find all ramification groups $G_i$ of $G$ (\cite{Serre}).
+\begin{prop}
+The ramification groups $G_i$ of $G$ are
+\[ G_u = \begin{cases} 
+      G    & u=0 \\
+      G^1  & 1 \leq u \leq p -1 \\
+      G^2  & p \leq u \leq p^2 -1\\
+      \vdots \\
+      \{1\} & p^{m-1} \leq u
+   \end{cases}
+\]
+\end{prop}
+
+\begin{proof}
+\end{proof}
+
+\subsection{Artin-Schreier Extensions in Positive Characteristic}
+(example from char p appendix to Renzo's book)
+We can rephrase Riemann-Hurwitz such that if field $\mathbb{F}$ has characteristic $p$ and $p|e$ where $e$ is the ramification index of a point under a degree $d$ covering map $\phi:X \to Y$ of curves over $\mathbb{F}$, then
 $$
-2g_Y -2 = d(2g_X -2) + \sum_{x\in X} \big( \sum^{\infty}_{i=0}|G_i(x)| -1 \big)
+2g_Y -2 = d(2g_X -2) + \sum_{x\in X} \big( \sum^{\infty}_{i=0}|G_i(x)| -1 \big).
 $$
+
+For a smooth compact algebraic curve $X_{p,t}: x^p - x - f(y)$ where $f(y)$ is degree $t$ over algebraically closed field $\mathbb{F}$ of characteristic $p \not= 0$. Now consider the covering map $\psi: X_{p,t} \to \mathbb{A}^1_\mathbb{F}$ of the affine line over $\mathbb{F}$ such that $\psi(x,y)=y$. 
+
+Strategy (use change of variables $x=x\bar{y}^a$,$\bar{y}=1/y$ so $p_\infty = (0,0)$, and $t=ap-1$):
+Since $\psi$ is clearly unramified over $\mathbb{A}^1_\mathbb{F}$, consider now $\psi: X_{p,t} \to \mathbb{P}^2_\mathbb{F}$. We see now that $\psi$ is ramified over $p_\infty$ and $Gal(\psi)\cong \mathbb{Z}/p = <\tau>=<x+1>$. We want to show that there exists uniformizing parameter $\pi$ such that $v_\infty(\pi) = 1$, then since $\tau=x+1$ generates $G$ we want to check $\tau(\pi)-\pi$, and finally evaluate $t_\infty = v_{\infty}(\tau(\pi)-\pi)$. Because $\mathbb{Z}/p = G$ is simple $G_{t_\infty}={1}$ so we get 
+$$
+\sum_{x\in X} \big( \sum^{\infty}_{i=0}|G_i(x)| -1 \big) = |\mathbb{Z}/p|(t_{p_\infty} + 1)=(p-1)(t_{p_\infty} + 1).
+$$
+Which we can confirm by \cite{stitchenoth} III.7.8.
 \nocite{*}
 \printbibliography
 
