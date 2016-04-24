@@ -88,33 +88,38 @@
 
 \maketitle % Print the title
 \section{Abstract}
-Studying higher ramification groups immediately depends on some key ideas from valuation theory. With that in mind we hope to layout the essential results from valuation theory before proceeding to the subject of this paper. Higher ramification groups arise when studying extensions of fields, and the ramification of primes in subrings of the base field. In particular ramification groups can be useful when studying wildly ramified covers (when the characteristic of your base field divides the ramification index of some prime). Then need to find the order of higher ramification groups to correct our ramification index. Another application of higher ramification groups is to study the subgroup structure of a Galois group. As the higher ramifications groups will all be subgroups, and in some instances tell us about sylow p-subgroup structure. The aim of this paper is to understand at a general level what higher ramification groups are, and investigate a couple examples of their applications.
+Studying higher ramification groups immediately depends on some key ideas from valuation theory. With that in mind, this paper will outline the essential results from valuation theory before proceeding to higher ramification groups. Higher ramification groups arise when studying extensions of fraction fields of Dedekind rings, and the ramification of primes in subrings of the base field. In particular ramification groups can be useful when studying wildly ramified extensions. The goal in a wildly ramified extension is to find the order of higher ramification groups to correct the degree of the different. Another application of higher ramification groups is to study the subgroup structure of a Galois group. The higher ramification group filtration contains information about Sylow p-subgroup structure. The aim of this paper is to understand at a general level what higher ramification groups are, and investigate a couple examples of their applications.
 \section{Preliminaries}
 \subsection{Valuations}
-We will primarily deal with discrete valuations, though
+Valuations need not be discrete. Many results discussed in this paper either require discrete valuations or are most easily understood with respect to a discrete valuation. Thus discrete valuations will be the focus of this section.
 \begin{defn}[Discrete Valuation Ring (D.V.R.)]
 A discrete valuation ring is a principal ideal domain $O$ with a unique maximal ideal $p \not= 0$.
 \end{defn}
+
+\begin{ex} Consider the ring $\mathbb{Z}$ and prime $\mathfrak{p}\subset \mathbb{Z}$. The localization $\mathbb{Z}_{(\mathfrak{p})}$ is a local PID with unique maximal ideal $p\mathbb{Z}_{(\mathfrak{p})}$. Then $\mathbb{Z}_{(\mathfrak{p})}$ satisfies the definition of a discrete valuation ring.
+\end{ex}
+\begin{ex} Consider $k[[x]]$, the formal power series of the field $k$. It was shown in Math 566 (\cite{DnF}, 7.3 \#3) that all proper ideals of $k[[x]]$ are of the form $(x^n)$ (this is actually a corollary to what is shown in that problem). Further $(x)$ is maximal and contains all other proper ideals. It follows then that $(x)$ is the unique maximal ideal in $k[[x]]$ and all other proper ideals are principal. Thus $k[[x]]$ is a DVR.
+\end{ex}
 \begin{defn}[Uniformizing Parameter]
-Let $\mathfrak{p}$ be the unique maximal ideal of D.V.R. $O$. Since $O$ is a PID, there exists a prime $\pi$ in $O$ such that $\mathfrak{p}=(\pi)$. We call $\pi$ a uniformizing parameter.
+Let $\mathfrak{p}$ be the unique maximal ideal of D.V.R. $O$. Since $O$ is a PID, there exists a prime $\pi$ in $O$ such that $\mathfrak{p}=(\pi)$. Such a $\pi$ is called a uniformizing parameter.
 \end{defn}
-Theorem 7, section 16.2 in (\cite{DnF}) shows that $\pi$ is unique (up to multiplication by a unit) and generates the unique maximal ideal of $O$. Further in problem 26, in section 7.1 of \cite{DnF} (which we proved in math 566) we showed that $O \setminus \mathfrak{p}$ is the set of units in $O$. Then for any $a\in O\setminus \{0\}$ we know that $(a)$ is an ideal of $O$. We know $(a)$ is a nonzero ideal of $O$ and because $(\pi)$ is maximal, and in local ring $O$, there exists some $n\in \mathbb{Z}$ such that $(a) = (\pi)^n$. Notice if $a$ is a unit, then $n=0$ because $<a>=O$. 
+Theorem 7, section 16.2 in (\cite{DnF}) shows that $\pi$ is unique (up to multiplication by a unit) and generates the unique maximal ideal of $O$. Further in problem 26, in section 7.1 of \cite{DnF} (proven in math 566) it is shown that $O \setminus \mathfrak{p}$ is the set of units in $O$. Then for any $a\in O\setminus \{0\}$, $(a)$ is an ideal of $O$. Because $(a)$ is a nonzero ideal of $O$, $(\pi)$ is maximal, and $(a)$ is in a local ring $O$, there exists some $n\in \mathbb{Z}$ such that $(a) = (\pi)^n$. Notice if $a$ is a unit, then $n=0$ because $<a>=O$. 
 \begin{defn}[Discrete Valuation]
-The exponent $n$ used above is the valuation of $a$ denoted $v_\mathfrak{p}(a)$, it is a function $v_\mathfrak{p}:K^* \to \mathbb{Z}$ where $K$ is the field of fractions of $O$. We can extend $v_\mathfrak{p}$ to $K$ by setting $v_\mathfrak{p}(0) = \infty$. Further $v_\mathfrak{p}$ satisfies the following
+The exponent $n$ used above is the valuation of $a$ denoted $v_\mathfrak{p}(a)$, it is a function $v_\mathfrak{p}:K^* \to \mathbb{Z}$ where $K$ is the field of fractions of $O$. The valuation $v_\mathfrak{p}$ can be extended to $K$ by setting $v_\mathfrak{p}(0) = \infty$. Further $v_\mathfrak{p}$ satisfies the following
 \begin{enumerate}
 \item $v_\mathfrak{p}(ab)=v_\mathfrak{p}(a) + v_\mathfrak{p}(b)$.
 \item $v_\mathfrak{p}(a+b) \geq min\{v_\mathfrak{p}(a),v_\mathfrak{p}(b) \}$.
 \end{enumerate}
 \end{defn}
-There are also valuations which are not discrete, and we can classify all valuations as either archimedean or nonarchimedean. We call a valuation $v$ nonarchimedean if $v(n)$ is bounded for every $n\in \mathbb{N}$. Proposition 3.6 in \cite{Neukirch} is often incorporated in the definition of discrete valuations, as every discrete valuation is nonarchimedean.
+There are also valuations which are not discrete, and all valuations can be classified as either archimedean or nonarchimedean. A valuation $v$ is nonarchimedean if $v(n)$ is bounded for every $n\in \mathbb{N}$. Proposition 3.6 in \cite{Neukirch} is often incorporated in the definition of discrete valuations, as every discrete valuation is nonarchimedean.
 \begin{prop}
  A valuaion $v(x)$ is nonarchimedean if and only if it satisfies $v(x+y) \leq max\{v(x),v(y)\}$.
 \end{prop}
 \begin{proof}
-$(\Leftarrow)$ The reverse direction is straight forward. We just notice 
+$(\Leftarrow)$ The reverse direction is straight forward. Just notice 
 $$v(n)=v(1+\ldots+1) \leq 1\; \forall n\in\mathbb{N}.$$
 
-$(\Rightarrow)$ Now, $v(n) \leq N$ for all $n\in\mathbb{N}$ for some $N \in \mathbb{N}$. Then for arbitrary $x,y\in K$, without loss of generality, consider $v(x) \geq v(y)$. Choose $l \geq 0$, so we get $v(x)^{l}v(y)^{n-l} \leq v(x)$. Now applying binomial formula we see that
+$(\Rightarrow)$ Now, $v(n) \leq N$ for all $n\in\mathbb{N}$ for some $N \in \mathbb{N}$. Then for arbitrary $x,y\in K$, without loss of generality, consider $v(x) \geq v(y)$. Choose $l \geq 0$, then $v(x)^{l}v(y)^{n-l} \leq v(x)$. Now applying binomial formula yields
 $$
 	v(x+y)^{n} \leq \sum_{l=0}^{n} v\tbinom{n}{l} v(x)^l v(y)^{n-l} \leq N^{}(n+1)(v(x))^n
 $$
@@ -123,72 +128,90 @@ $$
 v(x+y) \leq N^{\frac{1}{n}}(1+n)^{\frac{1}{n}} v(x) = N^{\frac{1}{n}}(1+n)^{\frac{1}{n}} max\{v(x), v(y) \}
 $$
 
-The result then follows if we let $n \to \infty$. We can conclude then that for any discrete valuation (which is nonarchimedean) $v(x+y) \leq max \{v(x),v(y) \}$.
+The result then follows if letting $n \to \infty$. The conclusion is then for any discrete valuation (which is nonarchimedean) $v(x+y) \leq max \{v(x),v(y) \}$.
 \end{proof}
 
-Valuations are particularly useful when studying number fields because of the following propositions
+The following proposition is particularly useful because it provides a correspondence between prime ideals and valuations.
 \begin{prop}[\cite{Neukirch}]
 Let $O$ be a noetherian integral domain. $O$ is a Dedekind domain if and only if, for all prime ideals $\mathfrak{p} \not= 0$, the localizations $O_\mathfrak{p}$ are discrete valuation rings.
 \end{prop}
+When the previous proposition if applied to $\mathbb{Z}$ and the fraction field is consider, the following proposition is gained.
 \begin{prop}[\cite{Neukirch}]
 Every valuation of $\mathbb{Q}$ is equivalent to one of $\nu_p(x)$ (the nonarchimedean valuations) or $\nu_\infty(x)$ (the archimedean valuations).
 \end{prop}
-
+Finally, since ramification occurs via extensions or covers, it will be useful to know how valuations extend.
 \begin{defn}[Prolongation of a valuation]
 If $A \subset B$ are rings with $B$ integral over $A$, $\mathfrak{p}$ a prime in $A$, and $\mathfrak{q}$ prime in $B$ dividing $\mathfrak{p}$ with ramification index $e_\mathfrak{q}$ then $v_\mathfrak{q}(x)=e_\mathfrak{q}v_\mathfrak{p}(x)$ is a prolongation of $v_\mathfrak{p}$ with index $e_\mathfrak{q}$ (\cite{Serre}).
 \end{defn}
 
 \subsection{Field Completion}
-With a valuation $\nu$ on a field $K$ then for any real number $a\in(0,1)$ we can induce an absolute value on $K$ by
-
+With a valuation $\nu$ on a field $K$ then for any real number $a\in(0,1)$ an absolute value on $K$ can be defined by
 \[ ||x|| =  \begin{cases} 
       a^{\nu(x)} & x \not= 0 \\
       0 & x = 0 \\
    \end{cases}
 \]
-which satisfies the usual conditions of a metric as outlined by. A topology is then induced on $K$ via the absolute value metric, and we can denote the completion of $K$ with respect to the valuation $\nu$ by $K_\nu$. Note also that the metrics induced by different choices of $a$ are topologically equivalent, so the completion is dependent only on $\nu$. Further, $\nu$ extends in the completion of $K$ to a discrete valuation (which we will continue to call $\nu$) on $K_\nu$ (\cite{Serre}).
+which satisfies the usual conditions of a metric as outlined by \cite{Serre} section II.1. A topology is then induced on $K$ via the absolute value metric, and the completion of $K$ with respect to the valuation $\nu$ is denoted by $\widehat{K}$. Note also that the metrics induced by different choices of $a$ are topologically equivalent, so the completion is dependent only on $\nu$. Further, $\nu$ extends in the completion of $K$ to a discrete valuation (which will continue to be called $\nu$) on $\widehat{K}$ (\cite{Serre}).
 
+The Galois group of $\widehat{L}|\widehat{K}$ relates to the decomposition group of $L|K$ in the following way.
+\begin{prop}
+For $L|K$ is Galois with group $\Gamma$, $\nu_\mathfrak{p}(x)$ a valuation on $K$ and $\omega_\mathfrak{q}(x)$ a prolongation of $\nu_\mathfrak{p}$, let $\widehat{L}$,$\widehat{K}$ be the completions of $L$ and $K$ with respect to $\omega_\mathfrak{q}$ and $\nu_\mathfrak{p}$ respectively. If $D(L|K)$ is the decomposition group of $\mathfrak{q}$ over $\mathfrak{p}$, then $\widehat{L}|\widehat{K}$ is Galois with Galois group $D(L|K)$ \cite{Serre}.
+\end{prop}
+\begin{proof}
+This is corollary 4 to theorem 1 in \cite{Serre}, II.3 which shows that $[\widehat{L}:\widehat{K}]=ef$. As proven in class $D(L|K)=ef$.
+\end{proof}
 \section{Higher Ramification Groups}
-Consider now a finite Galois extension $L|K$ with Galois group $\Gamma$, associated discrete valuations $\omega$ on $L$ and $\nu$ on $K$ with uniformizing parameters $\pi_L$ and $\pi_K$ respectively, and integer rings $O_L$ and $O_K$.
-
-Recall that 
+Consider now $K$, the fraction field of a Dedekind ring $O_K$, with valuation $\nu$ and uniformizing parameter $\pi_K$. For Galois extension $L|K$ with Galois group $\Gamma$; prolongation of $\nu$, $\omega$, on $L$; uniformizing parameter $\pi_L$ of $\omega$; and discrete valuation ring $O_L$. The definitions of the higher ramification groups generalizes the definition of the inertia group.
 \begin{defn}[Higher Ramification Groups, \cite{Serre}]
-For every real number $i > -1$ we define the $i^{th}$ ramification group of $L|K$ by
+For every real number $i > -1$ define the $i^{th}$ ramification group of $L|K$ by
 $$
 G_i = G_i(L|K) = \{\sigma \in \Gamma | \omega(\sigma(a)-a)\geq i+1 \;\forall a \in O_L\}.
 $$
 \end{defn}
-The following is a proposition which helps characterize the higher ramification groups
+The following is a proposition which helps characterize the higher ramification groups with respect to the presentation of valuations above.
 \begin{prop}
-For any $a \in O_L$ and $\sigma \in G$, $\omega(\sigma(a) - a) \geq i+1$ if and only if  $\sigma(a) \equiv a \; mod \; <\pi_L>^{i+1}$.
+For any $a \in O_L$ and $\sigma \in \Gamma$, $\omega(\sigma(a) - a) \geq i+1$ if and only if  $\sigma(a) \equiv a \; mod \; (\pi_L)^{i+1}$.
 \end{prop}
 \begin{proof}
-
+\mbox{}\\*
 ($\Rightarrow$)
 $$
-\nu_L(\sigma(a)-a) \geq i+1 \implies \sigma(a)-a = \pi_L^(t)\frac{a}{b}
+\nu_L(\sigma(a)-a) \geq i+1 \implies \sigma(a)-a = \pi_L^{t}\frac{x}{y}
 $$
-where $t \geq i+1$ and $a,b,\pi_L\in O_L$ all relatively prime. The above then implies $\sigma(a)-a \equiv 0 \; mod \; <\pi_L>^{i+1}$.
+where $t \geq i+1$ and $x,y,\pi_L\in O_L$ all relatively prime. This follows from the definition of the valuation in the first section. The equation above then implies $\sigma(a)-a \equiv 0 \; mod \; (\pi_L)^{i+1}$.
 
-($\Leftarrow$) $$\sigma(a)-a \equiv 0 \; mod \; \pi_L^{i+1} \implies \sigma(a)-a = \pi_L^{t}\frac{a}{b}$$
+($\Leftarrow$) $$\sigma(a)-a \equiv 0 \; mod \; \pi_L^{i+1} \implies \sigma(a)-a = \pi_L^{t}\frac{x}{y}$$
 with the same restrictions as above. It follows then that $\nu_L(\sigma(a)-a) \geq i+1$.
 \end{proof}
-Clearly this induces the following filtration on G:
+The condition that $\nu(\sigma(a)-a) \geq i+1$ clearly induces the following filtration on $\Gamma$
 $$
-\{G_i(L|K)\}_{i\geq -1} = G_{-1} \supseteq G_0 \supseteq G_1 \supseteq \ldots
+\{G_i(L|K)\}_{i\geq -1} = G_{-1} \supseteq G_0 \supseteq G_1 \supseteq \ldots.
 $$
+This filtration can be investigated further due to the fact that $\forall i$, $G_i \triangleleft G$.
+\begin{proof} Consider $\tau \in \Gamma$. By membership of $G$, $\omega(\tau(a) - a) \geq 0\;\forall a\in O_L$, i.e. $\tau((\pi_L)^{i+1}) = (\pi_L)^{i+1}$ for all $i$. Thus there is an induced automorphism $\bar{\tau}$ of $O_L/(\pi_L^{i+1})$. Now consider $\phi_{i+1}:G \to aut(O_L/(\pi_L^{i+1})$ such that $\phi_{i+1}(\tau)=\bar{\tau}$. This is a group homomorphism with $ker(\phi_{i+1})=G_i$, so $G_i \triangleleft \Gamma$ for all $i$.
+\end{proof} 
+The first two ramification groups, $G_{-1}$ and $G_0$, are already familiar. For $i=-1$ from the definition it follows $G_{-1} = \{\sigma \in \Gamma |\omega(\sigma(a)-a) \geq 0\;\forall a\in O_L\}=\Gamma$ because $O_L$ is the DVR of $L$ with respect to $\omega$. For $i+0$, $G_{0}$ equals the inertia group $I(L|K)$ by noticing that $\phi_1$ is the homomorphism used to originally define the inertia group.
 
+Occasionally it is useful to denote the index of the ramification group in which an elements $\sigma\in\Gamma$ last appears. 
+\begin{defn}
+Let $x\in O_L$ such that $O_L=O_K[x]$. Such an element is assured to exist by \cite{Neukirch}, II.10.4. Then $\sigma\in\Gamma$ define
+$$
+i_{L|K}(\sigma) = \omega(\sigma(x)-x).
+$$
+\end{defn}
+Noting the argument above which showed $G_i \triangleleft \Gamma$, it follows $\forall \sigma,\tau \in \Gamma$, $i_{L|K}(\tau^{-1}\sigma \tau) = i_{L|K}(\sigma)$. Another simple conclusion which follows from the definition of $i_{L|K}$ is $i_{L|K}(\sigma)\geq i+1 \iff \sigma\in G_i$.
 
+Consider now $H\subset\Gamma$ a subgroup, and let $K'$ be the fixed field of $H$ so that $H=Gal(L|K')$. The following relations follow from the above propositions.
 \begin{prop}
-The first two ramification groups are $G_{0} = G$ and $G_{1}=I$.
+For every $\sigma\in H$, $i_{L|K'}(\sigma)=i_{L|K}(\sigma)$, and $H_i=G_i \cap H$ (\cite{Serre}).
 \end{prop}
+\begin{proof}
+Let $\phi_{i+1}:\Gamma \to Aut(O_L|(\pi_L)^{i+1})$ and $\psi_{i+1}:H \to Aut(O_L|(\pi_L)^{i+1})$ such that $\phi_{i+1}(\sigma)=\bar{\sigma}$ and $\psi_{i+1}$ defined similarly. As shown above, $G_i = ker(\phi_{i+1})$ and $H_i = ker(\psi_{i+1})$. Thus the conclusions $H_i = H\cup G_i$ and $i_{L|K'}(\sigma)=i_{L|K}(\sigma)$ follow.
+\end{proof}
 
-\begin{prop}
-For $L|K$ is Galois with group $\Gamma$, $\nu_\mathfrak{p}(x)$ a valuation on $K$ and $\omega_\mathfrak{q}(x)$ a prolongation of $\nu_\mathfrak{p}$, let $\widehat{L}$,$\widehat{K}$ be the completions of $L$ and $K$ with respect to $\omega_\mathfrak{q}$ and $\nu_\mathfrak{p}$ respectively. If $D(L|K)$ is the decomposition group of $\mathfrak{q}$ over $\mathfrak{p}$, then $\widehat{L}|\widehat{K}$ is Galois with Galois group $D(L|K)$.
-\end{prop}
 
 \section{The Upper Numbering and Ramification Jump}
-
+There is a renumbering of the ramification groups which lends itself to other computations. The ordering used above is called the lower numbering while the renumbering introduced below is called the upper numbering. The upper numbering is useful when working with quotient group computations, while the lower numbering works best for subgroup computations (\cite{Neukirch}).
 \begin{defn}[Upper Numbering of the Higher Ramification groups]
 Consider the function
 $$
@@ -197,23 +220,32 @@ $$
 called the Herbrand function which has inverse map $\psi$.
 Then for any real $s \geq -1$ let $G_s = G_{\lceil s \rceil}$ and renumber the ramification groups by $G^t(L|K) = G_s(L|K)$ where $s=\psi(t)$. 
 \end{defn}
+As this new numbering allows for noninteger index, the index at which the ramification group changes is given a name.
 \begin{defn}[Ramification Jump]
-If $G^{t}(L|K) \not=G^{t+\epsilon}(L|K)$ for any $\epsilon \geq 0$ then we call $t$ a ramification jump.
+If $G^{t}(L|K) \not=G^{t+\epsilon}(L|K)$ for any $\epsilon \geq 0$ then $t$ is called a ramification jump.
 \end{defn}
-
+These two concepts are important for the final theorem of this paper. Which assures that in certain circumstances, ramification groups only change at integer indexes.
 \begin{thm}[Hasse-Arf]
 For a finite abelian extension $L|K$, the jumps of the filtration $\{G^{i}(L|K)\}_{i \geq -1}$ are rational integers.
 \end{thm}
-Serre gives a useful interpretation of the Hasse-Arf theorem, namely that if $G_i \not= G_{i+1}$ then $\varphi(i)$ is an integer. We can use this in the following example (\cite{Serre}).
+Serre gives a useful interpretation of the Hasse-Arf theorem, namely that if $G_i \not= G_{i+1}$ then $\varphi(i)$ is an integer. This interpretation is helpful in the following example (\cite{Serre}).
 
 \begin{ex}
-Suppose $G$ is a cyclic group of order $p^n$ where $p$ is the characteristic of $\widehat{K}$. Let $G(i)$ be the subgroup of $G$ with order $p^{n-i}$. Then there exist integers $i_0, \ldots,i_{n-1}$ such that we can identify all ramification groups as follows:
+Suppose $G$ is a cyclic group of order $p^n$ where $p$ is the characteristic of $\bar{K}$. Let $G(i)$ be the subgroup of $G$ with order $p^{n-i}$. Then there exist integers $i_0, \ldots,i_{n-1}$ such that all ramification groups are identified as follows:
 $$G_0 = G_{i_0} = G = G^0 = G^{i_0}$$
 $$G_{{i_0}+1} = \ldots = G_{{i_0}+pi_1} = G(1) = G^{i_0+1} = \ldots = G^{i_0 + i_1}$$
 $$G_{{i_0}+pi_1+1} = \ldots = G_{{i_0}+pi_1+p^2 i_2} = G(2) = G^{i_0+i_1+1} = \ldots = G^{i_0 + i_1+i_2}$$
 $$\vdots$$
 $$G_{i_0+pi_1+p^2 i_2 + \cdots + p^{n-1}i_{n-1} +1}={1}=G^{i_0+\cdots+i_{n-1}+1}.$$
 \end{ex}
+
+\begin{proof}
+ Because $G=Gal(\bar{L}|\bar{K})$ is cyclic with order $p^n$, it follows that $\bar{L}|\bar{K}$ is an extension of finite fields, i.e. $L\cong \bar{\mathbb{F}}_{p^n}$ and $K\cong \bar{\mathbb{F}}_p$. Further recall that $G$ is generated by fr\"{o}benius $\sigma$ (shown in Math 567). By Euler's totient there are $(p-1)p^n$ elements in $G$ with order relatively prime to $p^n$, consequently since $p^n-(p-1)p^{n-1}=p^{n-1}$, there are $n-1$ distinct proper subgroups of $G$. This places $n$ as an upper bound on the number of distinct ramification groups.
+
+Consider \cite{stitchenoth}, III.8.6 which states that if $char{\bar{K}} =p>0$, then $G_{i+1} \triangleleft G_i$ for all $i$. Then since each $G_i$ is a subgroup of a cyclic group, for each ramification group there exists a $\sigma^l\in G$ which generate $G_i$. As argued above there are only $n-1$ such $\sigma^{l}$ generating distinct proper subgroups of G. This places $n$ as the lower bound on the number of distinct ramification groups. Thus there are $n-1$ ramification jumps and $G_i = (\sigma^l)$ where $0 \leq l < n$.
+
+Finally $(\sigma^l)=Gal(\bar{\mathbb{F}}_{p^n}|\bar{\mathbb{F}}_{p^l})$ which is isomorphic to the cyclic group of order $p^{n-l}$.
+\end{proof}
 
 \section{Applications}
 \subsection{Cyclotomic Extensions of $\mathbb{Q}_p$}
@@ -233,11 +265,20 @@ The ramification groups $G_i$ of $G$ are
 \end{prop}
 
 \begin{proof}
+Consider an element $x\not=1$ in $G(n)\cong (\mathbb{Z}/n)^*$ and $\sigma_x$ the corresponding element in $G$. Let $i\in\mathbb{Z}$ be maximal such that $x \equiv 1 \; mod\;p^i$. By definition of $G(n)^i$ and maximality of $i$, $x\in G(n)^i$ but $x\not\in G(n)^{i+1}$. Now consider
+$$
+i_{\mathbb{Q}_p(\zeta)|\mathbb{Q}_p}(\sigma_x) = \omega(\sigma_x(\zeta)-\zeta) = \omega(\zeta^q-\zeta)=\omega(\zeta^{q-1}-1).
+$$
+Because $\zeta^{q-1}$ is a primitive $p^{m-i}$ root of unity, $\zeta^{q-1}-1$ is a uniformizer of the valuation on $\mathbb{Q}_p(\zeta_{p^{m-i}})$ (this is \cite{Serre}, prop. IV.17.iii). Then we get
+$$
+i_{\mathbb{Q}_p(\zeta)|\mathbb{Q}_p}(\sigma_x) = [\mathbb{Q}_p(\zeta_{p^{m}}):\mathbb{Q}_p(\zeta_{p^{m-i}})]=\#(G(n)^{m-i})=p^i.
+$$
+If $p^{k-1} \leq u \leq p^k -1$, then $\sigma_x\in G_u$ if and only if $i\geq k$. Consequently $G_u = G(n)^i$.
 \end{proof}
 
 \subsection{Artin-Schreier Extensions in Positive Characteristic}
-(example from char p appendix to Renzo's book)
-We can rephrase Riemann-Hurwitz such that if field $\mathbb{F}$ has characteristic $p$ and $p|e$ where $e$ is the ramification index of a point under a degree $d$ covering map $\phi:X \to Y$ of curves over $\mathbb{F}$, then
+
+We can rephrase Riemann-Hurwitz such that if field $\mathbb{F}$ has characteristic $p$ and $p|e$ where $e$ is the ramification index of a point under a degree $d$ covering map $\phi:X \to Y$ of curves over $\mathbb{F}$ \cite{RnR}. then
 $$
 2g_Y -2 = d(2g_X -2) + \sum_{x\in X} \big( \sum^{\infty}_{i=0}|G_i(x)| -1 \big).
 $$
@@ -250,7 +291,9 @@ $$
 \sum_{x\in X} \big( \sum^{\infty}_{i=0}|G_i(x)| -1 \big) = |\mathbb{Z}/p|(t_{p_\infty} + 1)=(p-1)(t_{p_\infty} + 1).
 $$
 Which we can confirm by \cite{stitchenoth} III.7.8.
-\nocite{*}
+
+\clearpage
+%\nocite{*}
 \printbibliography
 
 
