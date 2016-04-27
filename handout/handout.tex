@@ -1,0 +1,115 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+\usepackage[american]{babel}
+\usepackage{csquotes}
+\usepackage[style=apa,sortcites=true,sorting=nyt,backend=biber]{biblatex} 
+\DeclareLanguageMapping{american}{american-apa}%bibliography package
+
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
+
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+
+\usepackage{enumitem}
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+\bibliography{biblio}
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+\newtheoremstyle{break}
+  {\topsep}{\topsep}%
+  {\itshape}{}%
+  {\bfseries}{.}%
+  {\newline}{}%
+\theoremstyle{break}
+\newtheorem{lem}{Lemma}
+\newtheorem{defn}{Definition}
+\newtheorem{thm}{Theorem}
+\newtheorem{cor}{Corollary}
+\newtheorem{prop}{Proposition}
+\newtheorem{ex}{Example}
+\renewcommand\qedsymbol{//}
+\newtheorem{lma}{Lemma}
+\setenumerate[1]{label=\Roman*.}
+\setenumerate[2]{label=\Alph*.}
+\setenumerate[3]{label=\roman*.}
+\setenumerate[4]{label=\alph*.}
+
+\title{	
+\normalfont \normalsize 
+\textsc{Colorado State University Mathematics} \\ [25pt] % Your university, school and/or department name(s)
+%\horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+\huge Background on Valuations \\ % The assignment title
+%\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{Dean Bisogno} % Your name
+
+\date{\normalsize\today} % Today's date or a custom date
+
+\begin{document}
+\pagenumbering{gobble}
+\maketitle
+\begin{defn}[Discrete Valuation Ring (D.V.R.)]
+A discrete valuation ring is a principal ideal domain $O$ with a unique maximal ideal $p \not= 0$.
+\end{defn}
+
+\begin{defn}[Uniformizing Parameter]
+Let $\mathfrak{p}$ be the unique maximal ideal of D.V.R. $O$. Since $O$ is a PID, there exists a prime $\pi$ in $O$ such that $\mathfrak{p}=(\pi)$. Such a $\pi$ is called a uniformizing parameter.
+\end{defn}
+\begin{defn}[Discrete Valuation]
+A discrete valuation is a function $v_\mathfrak{p}:K^* \to \mathbb{Z}$ where $K$ is the field of fractions of $O$. The valuation $v_\mathfrak{p}$ can be extended to $K$ by setting $v_\mathfrak{p}(0) = \infty$. Further $v_\mathfrak{p}$ satisfies the following
+\begin{enumerate}
+\item $v_\mathfrak{p}(ab)=v_\mathfrak{p}(a) + v_\mathfrak{p}(b)$.
+\item $v_\mathfrak{p}(a+b) \geq min\{v_\mathfrak{p}(a),v_\mathfrak{p}(b) \}$.
+\end{enumerate}
+\end{defn}
+\begin{prop}[Nonarchimedean]
+ A valuaion $v(x)$ is nonarchimedean if and only if it satisfies $v(x+y) \leq max\{v(x),v(y)\}$. All discrete valuations are nonarchimedean.
+\end{prop}
+\begin{prop}
+Let $O$ be a noetherian integral domain. $O$ is a Dedekind domain if and only if, for all prime ideals $\mathfrak{p} \not= 0$, the localizations $O_{(\mathfrak{p})}$ are discrete valuation rings.
+\end{prop}
+\begin{defn}[Prolongation of a valuation]
+If $A \subset B$ are rings with $B$ integral over $A$, $\mathfrak{p}$ a prime in $A$, and $\mathfrak{q}$ prime in $B$ dividing $\mathfrak{p}$ with ramification index $e_\mathfrak{q}$ then $v_\mathfrak{q}(x)=e_\mathfrak{q}v_\mathfrak{p}(x)$ is a prolongation of $v_\mathfrak{p}$ with index $e_\mathfrak{q}$.
+\end{defn}
+
+
+\end{document}
