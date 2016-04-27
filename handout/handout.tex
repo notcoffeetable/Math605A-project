@@ -63,7 +63,7 @@
 \newtheorem{defn}{Definition}
 \newtheorem{thm}{Theorem}
 \newtheorem{cor}{Corollary}
-\newtheorem{prop}{Proposition}
+\newtheorem{prop}{Fact}
 \newtheorem{ex}{Example}
 \renewcommand\qedsymbol{//}
 \newtheorem{lma}{Lemma}
@@ -76,7 +76,7 @@
 \normalfont \normalsize 
 \textsc{Colorado State University Mathematics} \\ [25pt] % Your university, school and/or department name(s)
 %\horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
-\huge Background on Valuations \\ % The assignment title
+\huge Key Definitions \\ % The assignment title
 %\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
 }
 
@@ -97,18 +97,23 @@ Let $\mathfrak{p}$ be the unique maximal ideal of D.V.R. $O$. Since $O$ is a PID
 \begin{defn}[Discrete Valuation]
 A discrete valuation is a function $v_\mathfrak{p}:K^* \to \mathbb{Z}$ where $K$ is the field of fractions of $O$. The valuation $v_\mathfrak{p}$ can be extended to $K$ by setting $v_\mathfrak{p}(0) = \infty$. Further $v_\mathfrak{p}$ satisfies the following
 \begin{enumerate}
+\item $v(x)=\infty$ if and only if $x=0$.
 \item $v_\mathfrak{p}(ab)=v_\mathfrak{p}(a) + v_\mathfrak{p}(b)$.
 \item $v_\mathfrak{p}(a+b) \geq min\{v_\mathfrak{p}(a),v_\mathfrak{p}(b) \}$.
+\item $v(a) =0$ for any nonzero unit.
 \end{enumerate}
 \end{defn}
-\begin{prop}[Nonarchimedean]
- A valuaion $v(x)$ is nonarchimedean if and only if it satisfies $v(x+y) \leq max\{v(x),v(y)\}$. All discrete valuations are nonarchimedean.
-\end{prop}
 \begin{prop}
 Let $O$ be a noetherian integral domain. $O$ is a Dedekind domain if and only if, for all prime ideals $\mathfrak{p} \not= 0$, the localizations $O_{(\mathfrak{p})}$ are discrete valuation rings.
 \end{prop}
-\begin{defn}[Prolongation of a valuation]
+\begin{defn}[Prolongation of a Valuation]
 If $A \subset B$ are rings with $B$ integral over $A$, $\mathfrak{p}$ a prime in $A$, and $\mathfrak{q}$ prime in $B$ dividing $\mathfrak{p}$ with ramification index $e_\mathfrak{q}$ then $v_\mathfrak{q}(x)=e_\mathfrak{q}v_\mathfrak{p}(x)$ is a prolongation of $v_\mathfrak{p}$ with index $e_\mathfrak{q}$.
+\end{defn}
+\begin{defn}[Higher Ramification Groups]
+Consider now $K$, the fraction field of a Dedekind ring $O_K$, with valuation $\nu$ and uniformizing parameter $\pi_K$. Also consider the Galois extension $L/K$ with Galois group $G$; prolongation of $\nu$, $\omega$, on $L$; uniformizing parameter $\pi_L$ of $\omega$; and discrete valuation ring $O_L$. For every integer $i \geq -1$ define the $i^{th}$ ramification group
+$$
+G_i = \{\sigma \in G | \omega(\sigma(a)-a)\geq i+1 \;\forall a \in O_L\}.
+$$
 \end{defn}
 
 
