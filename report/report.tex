@@ -277,12 +277,15 @@ If $p^{k-1} \leq u \leq p^k -1$, then $\sigma_x\in G_u$ if and only if $i\geq k$
 \end{proof}
 
 \subsection{Artin-Schreier Extensions in Positive Characteristic}
-The Riemann-Hurwitz formula can be generalized in terms of Weil differentials which are beyond the scope of this paper. Such a generalization yields the following
+The Riemann-Hurwitz formula can be generalized in terms of Weil differentials (which are beyond the scope of this paper). Such a generalization yields the following
 $$
 2g'-2=\frac{[F':F]}{[K':K]}(2g-2) + deg(Diff(F'/F)).
 $$
-Where $F/K$ an algebraic function field of genus $g$ and $F'/F$ a finite separable extension. Let $K'$ denote the constant field of $F'$ and $g'$ the genus of $F'/K'$ (\cite{stitchenoth}).
-Riemann-Hurwitz such that is a finite, or algebraically closed field $\mathbb{F}$ has characteristic $p$ and $p|e$ where $e$ is the ramification index of a point under a degree $d$ covering map $\phi:X \to Y$ of curves over ($\mathbb{F}$ \cite{RnR}). 
+Where $F/K$ an algebraic function field of genus $g$ and $F'/F$ a finite separable extension, $K'$ denotes the constant field of $F'$, and $g'$ the genus of $F'/K'$. The degree of the different can be computed using Hilbert's different formula  (\cite{stitchenoth}).
+$$
+deg(Diff(F'/F)) = \sum_{p\in\mathbb{P}}\sum_{i\geq 0}(|G_i| -1)
+$$
+Putting the above together results in the following Wild Riemann-Hurwitz formula. For algebraically closed field $\mathbb{F}$ which has characteristic $p$ and $p|e$ where $e$ is the ramification index of a point under a degree $d$ covering map $\phi:X \to Y$ of curves over $\mathbb{F}$ (\cite{RnR}). 
 $$
 2g_Y -2 = d(2g_X -2) + \sum_{x\in X} \big( \sum^{\infty}_{i=0}|G_i(x)| -1 \big).
 $$
@@ -293,11 +296,11 @@ Strategy (use change of variables $x=x\bar{y}^a$,$\bar{y}=1/y$ so $p_\infty = (0
 Since $\psi$ is clearly unramified over $\mathbb{A}^1_\mathbb{F}$, consider now $\psi: X_{p,t} \to \mathbb{P}^1_\mathbb{F}$. Then $\psi$ is only ramified over $p_\infty$. 
 
 
-In order to compute the ramification groups it necessary to understand the Galois group of $\psi$. To do so consider $Auth(X)$. Let $\tau(x)=x+1$ then if $x^p - x - f(y) = 0$ it follows
+In order to compute the ramification groups it necessary to understand the Galois group of $\psi$. To do so, consider $Aut(X)$. Let $\tau(x)=x+1$ then if $x^p - x - f(y) = 0$ it follows
 $$
 \tau(x)^p - \tau(x) - f(y) = (x+1)^p - (x+1) - f(y) = x^p + 1 - x - 1 - f(y) = x^p-x-f(y) = 0
 $$
-because $char(\mathbb{F})=p$. Consequently $\tau\in Aut(X_{p,t})$ and in fact generates the automorphism group which is isomorphic to $(\mathbb{Z}/p)^*$ which agrees with the conclusion of \cite{stitchenoth}, III.7.10. Let $G=Aut(\psi)$.
+because $char(\mathbb{F})=p$. Consequently $\tau\in Aut(X_{p,t})$ and in fact generates the automorphism group which is isomorphic to $\mathbb{Z}/p$ which agrees with the conclusion of \cite{stitchenoth}, III.7.10. Let $G=Aut(\psi)$.
 
 Applying the change of variables $\bar{y}=\frac{1}{y}$, $\bar{x}=x\bar{y}^a$ will make computations simpler because then $p_\infty = (0,0)$. The change of variables yields:
 $$x^p-x-y^t = 0 \implies x^p-x-y^{ap-1}=0 \implies x^p-x-y^{ap}y^{-1}=0 $$
@@ -313,11 +316,11 @@ $$\nu_\infty(\tau(\pi)-\pi) = \nu_\infty(\bar{y}^a)=a\nu_\infty(\bar{y})$$
 $$a\nu_\infty(\bar{y})=a\nu_\infty(\bar{x}^p - \bar{x}\bar{y}{a(p-1)})=a\cdot min\{\nu_\infty(\bar{x}^p),\nu_\infty(\bar{x}\bar{y}^{a(p-1)})\}$$
 $$\nu_\infty(\tau(\pi)-\pi) = \nu_\infty(\bar{y}^a) = a\cdot\nu_\infty(\bar{x}^p)=ap.$$
 
-What has been calculated is the ramification jump $t_{p_\infty} = ap-1$ meaning $G = G_0 \ldots G_{ap-1} \triangleright G_{ap} = G{ap+1}\ldots$. Because $(\mathbb{Z}/p)^*$ is simple and $G_{ap} \triangleleft G$ this implies that $G_{ap} = \{1\}$ and all previous ramification groups are isomorphic to $(\mathbb{Z}/p)^*$. Consequently it is now possible to calculate the degree of the different
+What has been calculated is the ramification jump $t_{p_\infty} = ap-1$ meaning $G = G_0 \ldots G_{ap-1} \triangleright G_{ap} = G{ap+1}\ldots$. Because $\mathbb{Z}/p$ is simple and $G_{ap} \triangleleft G$ this implies that $G_{ap} = \{1\}$ and all previous ramification groups are isomorphic to $\mathbb{Z}/p$. Consequently it is now possible to calculate the degree of the different
 $$
 \sum_{b\in\mathbb{A}^1_\mathbb{F}} \sum_{i=0}^\infty |G_i| - 1 = \sum_{b\in\mathbb{A}^1_\mathbb{F}} (p-1)(ap).
 $$
-Where $|(\mathbb{Z}/p)^*|=(p-1)$ and $ap$ is the number of nontrivial ramification groups. Because $p_\infty$ is the only ramified point, the above reduces to $(p-1)(ap)$ as all other points have trivial ramification groups. Thus the genus of $X^\bullet_{p,t}$ can be accurately calculated (using $ap=t+1$:
+Where $|\mathbb{Z}/p|=p$ and $ap$ is the number of nontrivial ramification groups. Because $p_\infty$ is the only ramified point, the above reduces to $(p-1)(ap)$ as all other points have trivial ramification groups. Thus the genus of $X^\bullet_{p,t}$ can be accurately calculated (using $ap=t+1$:
 $$
 2g_{X_{p,t}} -2= p(2g_{\mathbb{P}^1_{\mathbb{F}}} -2) - (p-1)(ap) \implies  g_{X_{p,t}} = \frac{-2p-(p-1)(t+1)+2}{2}=\frac{(p-1)(t+1)}{2}.
 $$
