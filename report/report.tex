@@ -88,22 +88,22 @@
 
 \maketitle % Print the title
 \section{Abstract}
-Studying higher ramification groups immediately depends on some key ideas from valuation theory. With that in mind, this paper will outline the essential results from valuation theory before proceeding to higher ramification groups. Higher ramification groups arise when studying extensions of fraction fields of Dedekind rings, and the ramification of primes in subrings of the base field. In particular ramification groups can be useful when studying wildly ramified extensions. The goal in a wildly ramified extension is to find the order of higher ramification groups to correct the degree of the different. Another application of higher ramification groups is to study the subgroup structure of a Galois group. The higher ramification group filtration contains information about Sylow p-subgroup structure. The aim of this paper is to understand at a general level what higher ramification groups are, and investigate a couple examples of their applications.
+Studying higher ramification groups immediately depends on some key ideas from valuation theory. With that in mind, this paper will outline the essential results from valuation theory before proceeding to higher ramification groups. Higher ramification groups arise when studying extensions of fraction fields of Dedekind rings. Ramification groups are also useful when studying wildly ramified extensions of function fields. The goal in a wildly ramified extension of function fields is to find the order of higher ramification groups in order calculate the exponent of the different. Higher ramification groups can also be used to study the subgroup structure of a Galois group as the higher ramification group filtration can contains information about Sylow p-subgroup structure. The aim of this paper is to understand at a general level what higher ramification groups are, and investigate a couple examples of their applications.
 \section{Preliminaries}
 \subsection{Valuations}
-Valuations need not be discrete. Many results discussed in this paper either require discrete valuations or are most easily understood with respect to a discrete valuation. Thus discrete valuations will be the focus of this section.
+Though valuations need not be discrete, many results discussed in this paper either require discrete valuations or are most easily understood with respect to a discrete valuation. Thus discrete valuations will be the focus of this section.
 \begin{defn}[Discrete Valuation Ring (D.V.R.)]
 A discrete valuation ring is a principal ideal domain $O$ with a unique maximal ideal $p \not= 0$.
 \end{defn}
 
-\begin{ex} Consider the ring $\mathbb{Z}$ and prime $\mathfrak{p}\subset \mathbb{Z}$. The localization $\mathbb{Z}_{(\mathfrak{p})}$ is a local PID with unique maximal ideal $p\mathbb{Z}_{(\mathfrak{p})}$. Then $\mathbb{Z}_{(\mathfrak{p})}$ satisfies the definition of a discrete valuation ring.
+\begin{ex} Consider the ring $\mathbb{Z}$ and prime $\mathfrak{p} \in \mathbb{Z}$. The localization $\mathbb{Z}_{(\mathfrak{p})}$ is a local PID with unique maximal ideal $p\mathbb{Z}_{(\mathfrak{p})}$. Then $\mathbb{Z}_{(\mathfrak{p})}$ satisfies the definition of a discrete valuation ring.
 \end{ex}
-\begin{ex} Consider $k[[x]]$, the formal power series of the field $k$. It was shown in Math 566 (\cite{DnF}, 7.3 \#3) that all proper ideals of $k[[x]]$ are of the form $(x^n)$ (this is actually a corollary to what is shown in that problem). Further $(x)$ is maximal and contains all other proper ideals. It follows then that $(x)$ is the unique maximal ideal in $k[[x]]$ and all other proper ideals are principal. Thus $k[[x]]$ is a DVR.
+\begin{ex} Consider $k[[x]]$, the formal power series of the field $k$. It was shown in  \cite{DnF}, 7.3 \#3, that all proper ideals of $k[[x]]$ are of the form $(x^n)$ (this is actually a corollary to what is shown in that problem). Further $(x)$ is maximal and contains all other proper ideals. It follows then that $(x)$ is the unique maximal ideal in $k[[x]]$ and all other proper ideals are principal. Thus $k[[x]]$ is a DVR.
 \end{ex}
 \begin{defn}[Uniformizing Parameter]
-Let $\mathfrak{p}$ be the unique maximal ideal of D.V.R. $O$. Since $O$ is a PID, there exists a prime $\pi$ in $O$ such that $\mathfrak{p}=(\pi)$. Such a $\pi$ is called a uniformizing parameter.
+Let $\mathfrak{p}$ be the unique maximal ideal of DVR $O$. Since $O$ is a PID, there exists a prime $\pi$ in $O$ such that $\mathfrak{p}=(\pi)$. Such a $\pi$ is called a uniformizing parameter.
 \end{defn}
-Theorem 7, section 16.2 in (\cite{DnF}) shows that $\pi$ is unique (up to multiplication by a unit) and generates the unique maximal ideal of $O$. Further in problem 26, in section 7.1 of \cite{DnF} (proven in math 566) it is shown that $O \setminus \mathfrak{p}$ is the set of units in $O$. Then for any $a\in O\setminus \{0\}$, $(a)$ is an ideal of $O$. Because $(a)$ is a nonzero ideal of $O$, $(\pi)$ is maximal, and $(a)$ is in a local ring $O$, there exists some $n\in \mathbb{Z}$ such that $(a) = (\pi)^n$. Notice if $a$ is a unit, then $n=0$ because $<a>=O$. 
+Theorem 7, section 16.2 in (\cite{DnF}) shows that $\pi$ is unique (up to multiplication by a unit) and generates the unique maximal ideal of $O$. Further in problem 26, in section 7.1 of \cite{DnF}, (proven in math 566) it is shown that $O \setminus \mathfrak{p}$ is the set of units in $O$. Then for any $a\in O\setminus \{0\}$, $(a)$ is an ideal of $O$. Because $(a)$ is a nonzero ideal of $O$, $(\pi)$ is maximal, and $(a)$ is in a local ring $O$; there exists some $n\in \mathbb{Z}$ such that $(a) = (\pi)^n$. Notice if $a$ is a unit, then $n=0$ because $(a)=O$. 
 \begin{defn}[Discrete Valuation]
 The exponent $n$ used above is the valuation of $a$ denoted $v_\mathfrak{p}(a)$, it is a function $v_\mathfrak{p}:K^* \to \mathbb{Z}$ where $K$ is the field of fractions of $O$. The valuation $v_\mathfrak{p}$ can be extended to $K$ by setting $v_\mathfrak{p}(0) = \infty$. Further $v_\mathfrak{p}$ satisfies the following
 \begin{enumerate}
@@ -111,7 +111,7 @@ The exponent $n$ used above is the valuation of $a$ denoted $v_\mathfrak{p}(a)$,
 \item $v_\mathfrak{p}(a+b) \geq min\{v_\mathfrak{p}(a),v_\mathfrak{p}(b) \}$.
 \end{enumerate}
 \end{defn}
-There are also valuations which are not discrete, and all valuations can be classified as either archimedean or nonarchimedean. A valuation $v$ is nonarchimedean if $v(n)$ is bounded for every $n\in \mathbb{N}$. Proposition 3.6 in \cite{Neukirch} is often incorporated in the definition of discrete valuations, as every discrete valuation is nonarchimedean.
+All valuations can be classified as either archimedean or nonarchimedean. A valuation $v$ is nonarchimedean if $v(n)$ is bounded for every $n\in \mathbb{N}$. Proposition 3.6 in \cite{Neukirch}, is often incorporated in the definition of discrete valuations, as every discrete valuation is nonarchimedean.
 \begin{prop}
  A valuaion $v(x)$ is nonarchimedean if and only if it satisfies $v(x+y) \leq max\{v(x),v(y)\}$.
 \end{prop}
@@ -135,7 +135,7 @@ The following proposition is particularly useful because it provides a correspon
 \begin{prop}[\cite{Neukirch}]
 Let $O$ be a noetherian integral domain. $O$ is a Dedekind domain if and only if, for all prime ideals $\mathfrak{p} \not= 0$, the localizations $O_\mathfrak{p}$ are discrete valuation rings.
 \end{prop}
-When the previous proposition if applied to $\mathbb{Z}$ and the fraction field is consider, the following proposition is gained.
+When the previous proposition is applied to $\mathbb{Z}$ and the fraction field $\mathbb{Q}$ is consider, the following proposition is gained.
 \begin{prop}[\cite{Neukirch}]
 Every valuation of $\mathbb{Q}$ is equivalent to one of $\nu_p(x)$ (the nonarchimedean valuations) or $\nu_\infty(x)$ (the archimedean valuations).
 \end{prop}
@@ -151,26 +151,26 @@ With a valuation $\nu$ on a field $K$ then for any real number $a\in(0,1)$ an ab
       0 & x = 0 \\
    \end{cases}
 \]
-which satisfies the usual conditions of a metric as outlined by \cite{Serre} section II.1. A topology is then induced on $K$ via the absolute value metric, and the completion of $K$ with respect to the valuation $\nu$ is denoted by $\widehat{K}$. Note also that the metrics induced by different choices of $a$ are topologically equivalent, so the completion is dependent only on $\nu$. Further, $\nu$ extends in the completion of $K$ to a discrete valuation (which will continue to be called $\nu$) on $\widehat{K}$ (\cite{Serre}).
+which satisfies the usual conditions of a metric as outlined by \cite{Serre} section II.1. A topology is then induced on $K$ via the absolute value metric, and the completion of $K$ with respect to the valuation $\nu$ is denoted by $\widehat{K}$. Note also that the metrics induced by different choices of $a$ are topologically equivalent, so the completion is dependent only on $\nu$. Further, $\nu$ extends in the completion of $K$ to a valuation (which will continue to be called $\nu$) on $\widehat{K}$ (\cite{Serre}).
 
 The Galois group of $\widehat{L}/\widehat{K}$ relates to the decomposition group of $L/K$ in the following way.
 \begin{prop}
-For $L/K$ is Galois with group $\Gamma$, $\nu_\mathfrak{p}(x)$ a valuation on $K$ and $\omega_\mathfrak{q}(x)$ a prolongation of $\nu_\mathfrak{p}$, let $\widehat{L}$,$\widehat{K}$ be the completions of $L$ and $K$ with respect to $\omega_\mathfrak{q}$ and $\nu_\mathfrak{p}$ respectively. If $D(L/K)$ is the decomposition group of $\mathfrak{q}$ over $\mathfrak{p}$, then $\widehat{L}/\widehat{K}$ is Galois with Galois group $D(L/K)$ \cite{Serre}.
+For $L/K$ Galois with group $G$, $\nu_\mathfrak{p}(x)$ a valuation on $K$ and $\omega_\mathfrak{q}(x)$ a prolongation of $\nu_\mathfrak{p}$, let $\widehat{L}$,$\widehat{K}$ be the completions of $L$ and $K$ with respect to $\omega_\mathfrak{q}$ and $\nu_\mathfrak{p}$ respectively. If $D_{\mathfrak{q}}(L/K)$ is the decomposition group of $\mathfrak{q}$ over $\mathfrak{p}$, then $\widehat{L}/\widehat{K}$ is Galois with Galois group $D(L/K)$ (\cite{Serre}).
 \end{prop}
 \begin{proof}
-This is corollary 4 to theorem 1 in \cite{Serre}, II.3 which shows that $[\widehat{L}:\widehat{K}]=ef$. As proven in class $D(L/K)=ef$.
+This is corollary 4 to theorem 1 in \cite{Serre}, II.3, which shows that $[\widehat{L}:\widehat{K}]=ef$. As proven in class $|D(L/K)|=ef$.
 \end{proof}
 \section{Higher Ramification Groups}
-Consider now $K$, the fraction field of a Dedekind ring $O_K$, with valuation $\nu$ and uniformizing parameter $\pi_K$. For Galois extension $L/K$ with Galois group $\Gamma$; prolongation of $\nu$, $\omega$, on $L$; uniformizing parameter $\pi_L$ of $\omega$; and discrete valuation ring $O_L$. The definitions of the higher ramification groups generalizes the definition of the inertia group.
+Consider now $K$, the fraction field of a Dedekind ring $O_K$, with valuation $\nu$ and uniformizing parameter $\pi_K$. For Galois extension $L/K$ with Galois group $G$; prolongation of $\nu$, $\omega$, on $L$; uniformizing parameter $\pi_L$ of $\omega$; and discrete valuation ring $O_L$. The definitions of the higher ramification groups generalizes the definition of the inertia group.
 \begin{defn}[Higher Ramification Groups, \cite{Serre}]
-For every real number $i > -1$ define the $i^{th}$ ramification group of $L/K$ by
+For every real number $i \geq -1$ define the $i^{th}$ ramification group of $L/K$ with respect to $\omega$ by
 $$
-G_i = G_i(L/K) = \{\sigma \in \Gamma | \omega(\sigma(a)-a)\geq i+1 \;\forall a \in O_L\}.
+G_i = G_i(L/K) = \{\sigma \in G | \omega(\sigma(a)-a)\geq i+1 \;\forall a \in O_L\}.
 $$
 \end{defn}
-The following is a proposition which helps characterize the higher ramification groups with respect to the presentation of valuations above.
+Note that because $\nu$ corresponds to a prime $\mathfrak{p}$ and $\omega$ corresponds to a prime $\mathfrak{q}|\mathfrak{p}$, the ramification groups are generalizations of the decomposition and inertia groups. The following is a proposition which helps characterize the higher ramification groups with respect to the presentation of valuations above.
 \begin{prop}
-For any $a \in O_L$ and $\sigma \in \Gamma$, $\omega(\sigma(a) - a) \geq i+1$ if and only if  $\sigma(a) \equiv a \; mod \; (\pi_L)^{i+1}$.
+For any $a \in O_L$ and $\sigma \in G$, $\omega(\sigma(a) - a) \geq i+1$ if and only if  $\sigma(a) \equiv a \; mod \; (\pi_L)^{i+1}$.
 \end{prop}
 \begin{proof}
 \mbox{}\\*
@@ -183,30 +183,30 @@ where $t \geq i+1$ and $x,y,\pi_L\in O_L$ all relatively prime. This follows fro
 ($\Leftarrow$) $$\sigma(a)-a \equiv 0 \; mod \; \pi_L^{i+1} \implies \sigma(a)-a = \pi_L^{t}\frac{x}{y}$$
 with the same restrictions as above. It follows then that $\nu_L(\sigma(a)-a) \geq i+1$.
 \end{proof}
-The condition that $\nu(\sigma(a)-a) \geq i+1$ clearly induces the following filtration on $\Gamma$
+The condition that $\nu(\sigma(a)-a) \geq i+1$ clearly induces the following filtration on $G$
 $$
 \{G_i(L/K)\}_{i\geq -1} = G_{-1} \supseteq G_0 \supseteq G_1 \supseteq \ldots.
 $$
 This filtration can be investigated further due to the fact that $\forall i$, $G_i \triangleleft G$.
-\begin{proof} Consider $\tau \in \Gamma$. By membership of $G$, $\omega(\tau(a) - a) \geq 0\;\forall a\in O_L$, i.e. $\tau((\pi_L)^{i+1}) = (\pi_L)^{i+1}$ for all $i$. Thus there is an induced automorphism $\bar{\tau}$ of $O_L/(\pi_L^{i+1})$. Now consider $\phi_{i+1}:G \to aut(O_L/(\pi_L^{i+1})$ such that $\phi_{i+1}(\tau)=\bar{\tau}$. This is a group homomorphism with $ker(\phi_{i+1})=G_i$, so $G_i \triangleleft \Gamma$ for all $i$.
+\begin{proof} Consider $\tau \in G$. By membership of $G$, $\omega(\tau(a) - a) \geq 0\;\forall a\in O_L$, i.e. $\tau((\pi_L)^{i+1}) = (\pi_L)^{i+1}$ for all $i$. Thus there is an induced automorphism $\bar{\tau}$ of $O_L/(\pi_L^{i+1})$. Now consider $\phi_{i+1}:G \to aut(O_L/(\pi_L^{i+1})$ such that $\phi_{i+1}(\tau)=\bar{\tau}$. This is a group homomorphism with $ker(\phi_{i+1})=G_i$, so $G_i \triangleleft G$ for all $i$.
 \end{proof} 
-The first two ramification groups, $G_{-1}$ and $G_0$, are already familiar. For $i=-1$ from the definition it follows $G_{-1} = \{\sigma \in \Gamma |\omega(\sigma(a)-a) \geq 0\;\forall a\in O_L\}=\Gamma$ because $O_L$ is the DVR of $L$ with respect to $\omega$. For $i+0$, $G_{0}$ equals the inertia group $I(L/K)$ by noticing that $\phi_1$ is the homomorphism used to originally define the inertia group.
+The first two ramification groups, $G_{-1}$ and $G_0$, are already familiar. For $i=-1$ from the definition it follows $G_{-1} = \{\sigma \in G |\omega(\sigma(a)-a) \geq 0\;\forall a\in O_L\}$ which is the definition of the decomposition group $D_{\pi_K}(L/K)$. If $\pi_K$ is fully ramified in the extension then $G_{-1}=G$. For $i=0$, $G_{0}$ equals the inertia group $I(L/K)$ by noticing that $\phi_1$ is the homomorphism used to originally define the inertia group.
 
-Occasionally it is useful to denote the first index of the ramification group in which an element $\sigma\in\Gamma$ ceases to appear. 
+Occasionally it is useful to denote the first index of the ramification group in which an element $\sigma\in G$ ceases to appear. 
 \begin{defn}
-Let $x\in O_L$ such that $O_L=O_K[x]$. Such an element is assured to exist by \cite{Neukirch}, II.10.4. Then $\sigma\in\Gamma$ define
+Let $x\in O_L$ such that $O_L=O_K[x]$. Such an element is assured to exist by \cite{Neukirch}, II.10.4. Then for $\sigma\in G$ define
 $$
 i_{L/K}(\sigma) = \omega(\sigma(x)-x).
 $$
 \end{defn}
-Noting the argument above which showed $G_i \triangleleft \Gamma$, it follows $\forall \sigma,\tau \in \Gamma$, $i_{L/K}(\tau^{-1}\sigma \tau) = i_{L/K}(\sigma)$. Another simple conclusion which follows from the definition of $i_{L/K}$ is $i_{L/K}(\sigma)\geq i+1 \iff \sigma\in G_i$.
+Noting the argument above which showed $G_i \triangleleft G$, it follows $\forall \sigma,\tau \in G$, $i_{L/K}(\tau^{-1}\sigma \tau) = i_{L/K}(\sigma)$. Another simple conclusion which follows from the definition of $i_{L/K}$ is $i_{L/K}(\sigma)\geq i+1 $ if and only if $ \sigma\in G_i$.
 
-Consider now $H\subset\Gamma$ a subgroup, and let $K'$ be the fixed field of $H$ so that $H=Gal(L/K')$. The following relations follow from the above propositions.
+Consider now $H\subset G$ a subgroup, and let $K'$ be the fixed field of $H$ so that $H=Gal(L/K')$. The following relations follow from the above propositions.
 \begin{prop}
 For every $\sigma\in H$, $i_{L/K'}(\sigma)=i_{L/K}(\sigma)$, and $H_i=G_i \cap H$ (\cite{Serre}).
 \end{prop}
 \begin{proof}
-Let $\phi_{i+1}:\Gamma \to Aut(O_L/(\pi_L)^{i+1})$ and $\psi_{i+1}:H \to Aut(O_L/(\pi_L)^{i+1})$ such that $\phi_{i+1}(\sigma)=\bar{\sigma}$ and $\psi_{i+1}$ defined similarly. As shown above, $G_i = ker(\phi_{i+1})$ and $H_i = ker(\psi_{i+1})$. Thus the conclusions $H_i = H\cup G_i$ and $i_{L/K'}(\sigma)=i_{L/K}(\sigma)$ follow.
+Let $\phi_{i+1}:G \to Aut(O_L/(\pi_L)^{i+1})$ and $\psi_{i+1}:H \to Aut(O_L/(\pi_L)^{i+1})$ such that $\phi_{i+1}(\sigma)=\bar{\sigma}$ and $\psi_{i+1}$ defined similarly. As shown above, $G_i = ker(\phi_{i+1})$ and $H_i = ker(\psi_{i+1})$. Thus the conclusions $H_i = H\cup G_i$ and $i_{L/K'}(\sigma)=i_{L/K}(\sigma)$ follow.
 \end{proof}
 
 
@@ -242,7 +242,7 @@ $$G_{i_0+pi_1+p^2 i_2 + \cdots + p^{n-1}i_{n-1} +1}={1}=G^{i_0+\cdots+i_{n-1}+1}
 \begin{proof}
  Because $G=Gal(\bar{L}/\bar{K})$ is cyclic with order $p^n$, it follows that $\bar{L}/\bar{K}$ is an extension of finite fields, i.e. $L\cong \bar{\mathbb{F}}_{p^n}$ and $K\cong \bar{\mathbb{F}}_p$. Further recall that $G$ is generated by fr\"{o}benius $\sigma$ (shown in Math 567). By Euler's totient there are $(p-1)p^n$ elements in $G$ with order relatively prime to $p^n$, consequently since $p^n-(p-1)p^{n-1}=p^{n-1}$, there are $n-1$ distinct proper subgroups of $G$. This places $n$ as an upper bound on the number of distinct ramification groups.
 
-Consider \cite{stitchenoth}, III.8.6 which states that if $char{\bar{K}} =p>0$, then $G_{i+1} \triangleleft G_i$ for all $i$. Then since each $G_i$ is a subgroup of a cyclic group, for each ramification group there exists a $\sigma^l\in G$ which generate $G_i$. As argued above there are only $n-1$ such $\sigma^{l}$ generating distinct proper subgroups of G. This places $n$ as the lower bound on the number of distinct ramification groups. Thus there are $n-1$ ramification jumps and $G_i = (\sigma^l)$ where $0 \leq l < n$.
+Consider \cite{stitchenoth}, III.8.6, which states that if $char{\bar{K}} =p>0$, then $G_{i+1} \triangleleft G_i$ for all $i$. Then since each $G_i$ is a subgroup of a cyclic group, for each ramification group there exists a $\sigma^l\in G$ which generate $G_i$. As argued above there are only $n-1$ such $\sigma^{l}$ generating distinct proper subgroups of G. This places $n$ as the lower bound on the number of distinct ramification groups. Thus there are $n-1$ ramification jumps and $G_i = (\sigma^l)$ where $0 \leq l < n$.
 
 Finally $(\sigma^l)=Gal(\bar{\mathbb{F}}_{p^n}/\bar{\mathbb{F}}_{p^l})$ which is isomorphic to the cyclic group of order $p^{n-l}$.
 \end{proof}
@@ -277,38 +277,45 @@ If $p^{k-1} \leq u \leq p^k -1$, then $\sigma_x\in G_u$ if and only if $i\geq k$
 \end{proof}
 
 \subsection{Artin-Schreier Extensions in Positive Characteristic}
-The Riemann-Hurwitz formula can be generalized in terms of Weil differentials (which are beyond the scope of this paper). Such a generalization yields the following
+What follows is the above theory of ramification groups, applied to extensions of function field. Rather than speaking of primes, the theory is rephrased in terms of places. For the purposes here a place $\pi_F$ in the extension $F/K$ is the maximal ideal of a valuation ring $O$ of $F/K$. Note that in number fields primes correspond to places (\cite{stitchenoth}). The set of all places of an extension is denoted $\mathbb{P}_F$. First a generalized Hurwitz Genus formula can be defined in terms of Weil differentials (which are beyond the scope of this paper). Such a generalization yields the following (\cite{stitchenoth}).
+\begin{thm}[Generalized Hurwitz Genus Formula]
+Consider $F/K$ an algebraic function field of genus $g$ and $F'/F$ a finite separable extension, $K'$ denotes the constant field of $F'$, and $g'$ the genus of $F'/K'$.
 $$
 2g'-2=\frac{[F':F]}{[K':K]}(2g-2) + deg(Diff(F'/F)).
 $$
-Where $F/K$ an algebraic function field of genus $g$ and $F'/F$ a finite separable extension, $K'$ denotes the constant field of $F'$, and $g'$ the genus of $F'/K'$. The degree of the different can be computed using Hilbert's different formula  (\cite{stitchenoth}).
+\end{thm}
+Then the different exponent over a place $deg(Diff(\pi_{F'}/\pi_{F}))$ can be computed using Hilbert's different formula  (\cite{stitchenoth}).
+\begin{defn}[Hilbert's Different Formula]
+Consider a Galois extension $F'/F$ of algebraic function fields. A place $\pi_F$ of $F$, and a place $\pi_{F'}$ of $F'$ such that $\pi_{F'}|\pi_F$. Then the different exponent can be calculated
 $$
-deg(Diff(F'/F)) = \sum_{p\in\mathbb{P}}\sum_{i\geq 0}(|G_i| -1)
+deg(Diff(\pi_{F'}|\pi_{F})) = \sum_{i\geq 0}(|G_i| -1).
 $$
-Putting the above together results in the following Wild Riemann-Hurwitz formula. For algebraically closed field $\mathbb{F}$ which has characteristic $p$ and $p|e$ where $e$ is the ramification index of a point under a degree $d$ covering map $\phi:X \to Y$ of curves over $\mathbb{F}$ (\cite{RnR}). 
+The different exponent of the extension is then the sum over all places of the extension
 $$
-2g_Y -2 = d(2g_X -2) + \sum_{x\in X} \big( \sum^{\infty}_{i=0}|G_i(x)| -1 \big).
+deg(Diff(F'/F)) = \sum_{P\in\mathbb{P}_F'}\sum_{i\geq 0}(|G_i| -1).
+$$
+\end{defn}
+Putting the above together (along with Dedekind's different formula (\cite{stitchenoth})) results in the following Wild Riemann-Hurwitz formula. For algebraically closed field $\mathbb{F}$ which has characteristic $p$ and $p|e$ where $e$ is the ramification index of place under a degree $d$ covering map $\phi:X \to Y$ of curves over $\mathbb{F}$ (\cite{RnR}). 
+$$
+2g_Y -2 = d(2g_X -2) + \sum_{\pi_F \in X} \big( \sum^{\infty}_{i=0}|G_i(x)| -1 \big).
 $$
 
-Consider a smooth compact algebraic curve $X_{p,t}: x^p - x - f(y)$, $f(y)$ a degree $t$ polynomial where $p\not|t$. Further consider the covering map $\psi: X_{p,t} \to \mathbb{A}^1_\mathbb{F}$ such that $\psi(x,y)=y$. 
-The case considered here is when $X_{p,t}: x^p-x = y^t$ where $t=ap-1$.
-Strategy (use change of variables $x=x\bar{y}^a$,$\bar{y}=1/y$ so $p_\infty = (0,0)$, and $t=ap-1$):
-Since $\psi$ is clearly unramified over $\mathbb{A}^1_\mathbb{F}$, consider now $\psi: X_{p,t} \to \mathbb{P}^1_\mathbb{F}$. Then $\psi$ is only ramified over $p_\infty$. 
+Consider a smooth algebraic curve $X_{p,t}: x^p - x - y^t$, where $t=ap-1$ and $a\in \mathbb{Z}^{+}$. Further consider a covering map $\psi: X_{p,t} \to \mathbb{A}^1_\mathbb{F}$ such that $\psi(x,y)=y$. 
+Since $\psi$ is unramified over $\mathbb{A}^1_\mathbb{F}$, consider now $\psi: X_{p,t} \to \mathbb{P}^1_\mathbb{F}$. Then $\psi$ is only ramified over $p_\infty$. 
 
-
-In order to compute the ramification groups it necessary to understand the Galois group of $\psi$. To do so, consider $Aut(X)$. Let $\tau(x)=x+1$ then if $x^p - x - f(y) = 0$ it follows
+From Hilbert's different formula it follows that in order to compute the different exponent it is necessary to understand the Galois group of $\psi$ and the ramification groups of $P_\infty$. To do so consider $Aut(X)$. Let $\tau(x)=x+1$ then if $x^p - x - y^t = 0$ it follows
 $$
-\tau(x)^p - \tau(x) - f(y) = (x+1)^p - (x+1) - f(y) = x^p + 1 - x - 1 - f(y) = x^p-x-f(y) = 0
+\tau(x)^p - \tau(x) - y^t = (x+1)^p - (x+1) - y^t = x^p + 1 - x - 1 - y^t = x^p-x-y^t = 0
 $$
-because $char(\mathbb{F})=p$. Consequently $\tau\in Aut(X_{p,t})$ and in fact generates the automorphism group which is isomorphic to $\mathbb{Z}/p$ which agrees with the conclusion of \cite{stitchenoth}, III.7.10. Let $G=Aut(\psi)$.
+because $char(\mathbb{F})=p$. Consequently $\tau\in Aut(X_{p,t})$  and $<\tau>= Aut(X_{p,t}) \cong \mathbb{Z}/p$ which agrees with the conclusion of \cite{stitchenoth}, III.7.10. Then the Galois group of the cover is $G=Aut(\psi)$.
 
-Applying the change of variables $\bar{y}=\frac{1}{y}$, $\bar{x}=x\bar{y}^a$ results in a compactification of $X_{p,t}$ where $p_\infty = (0,0)$. The change of variables yields:
+Applying the change of variables $\bar{y}=\frac{1}{y}$, $\bar{x}=x\bar{y}^a$ results in a compactification of $X_{p,t}$ where $P_\infty = (0,0)$. The change of variables yields:
 $$x^p-x-y^t = 0 \implies x^p-x-y^{ap-1}=0 \implies x^p-x-y^{ap}y^{-1}=0 $$
 $$\implies x^p y^{-ap} -xy{-ap}-y^{-1}=0 \implies (xy^{-a})^p - xy^{-a}y^{-a(p-1)}-y^{-1}=0 $$
 $$\implies \bar{x}^p-\bar{x}\bar{y}^{a(p-1)}-\bar{y} = 0.$$
-Thus $X^{\bullet}_{p,t}: \bar{x}^p-\bar{x}\bar{y}^{a(p-1)}-\bar{y}$ which is ramified over $p_\infty = (0,0)$.
+Thus $X^{\bullet}_{p,t}: \bar{x}^p-\bar{x}\bar{y}^{a(p-1)}-\bar{y}$ which is ramified over $P_\infty = (0,0)$.
 
-Notice now that $\nu_\infty(\bar{x}) = 1$ because $\bar{x}$ vanishes with order 1 at $p_\infty$ so $\pi_\infty = \bar{x}$ is the uniformizing parameter over $P_\infty$. Further applying $\tau$, the generator of $G$, to $\bar{x}$ results in the following:
+Notice now that $\nu_\infty(\bar{x}) = 1$ because $\bar{x}$ vanishes with order 1 at $P_\infty$ so $\pi_\infty = \bar{x}$ is a uniformizing parameter over $P_\infty$. Further applying $\tau$, the generator of $G$, to $\bar{x}$ results in the following:
 $$\tau(\bar{x}) = (x+1)\bar{y}^a = \bar{x} + \bar{y}^a$$
 $$\implies \tau(\pi)-\pi =  \tau(\bar{x}) - \bar{x} = \bar{y}^a.$$
 Consequently it is possible to compute $i_G(\tau)$ (recall this is the index of the first ramification group in which $\tau$ no longer appears):
@@ -316,19 +323,22 @@ $$\nu_\infty(\tau(\pi)-\pi) = \nu_\infty(\bar{y}^a)=a\nu_\infty(\bar{y})$$
 $$a\nu_\infty(\bar{y})=a\nu_\infty(\bar{x}^p - \bar{x}\bar{y}{a(p-1)})=a\cdot min\{\nu_\infty(\bar{x}^p),\nu_\infty(\bar{x}\bar{y}^{a(p-1)})\}$$
 $$\nu_\infty(\tau(\pi)-\pi) = \nu_\infty(\bar{y}^a) = a\cdot\nu_\infty(\bar{x}^p)=ap.$$
 
-What has been calculated is the ramification jump $t_{p_\infty} = ap-1$ meaning $G = G_0 \ldots G_{ap-1} \triangleright G_{ap} = G{ap+1}\ldots$. Because $\mathbb{Z}/p$ is simple and $G_{ap} \triangleleft G$ this implies that $G_{ap} = \{1\}$ and all previous ramification groups are isomorphic to $\mathbb{Z}/p$. Consequently it is now possible to calculate the degree of the different
+What has been calculated is the ramification jump $t_{p_\infty} = ap-1$ meaning $G = G_0=\ldots =G_{ap-1} \triangleright G_{ap} = G{ap+1}=\ldots ={1}$. Because $\mathbb{Z}/p$ is simple and $G_{ap} \triangleleft G$ is a strict inclusion; this implies that $G_{ap} = \{1\}$ and all previous ramification groups are isomorphic to $\mathbb{Z}/p$. Consequently it is now possible to calculate the degree of the different with Hilbert's different formula
 $$
-\sum_{b\in\mathbb{A}^1_\mathbb{F}} \sum_{i=0}^\infty |G_i| - 1 = \sum_{b\in\mathbb{A}^1_\mathbb{F}} (p-1)(ap).
+\sum_{P\in\mathbb{P}_\psi} \sum_{i=0}^\infty |G_i| - 1 = \sum_{P\in\mathbb{P}_\psi} (p-1)(ap).
 $$
-Where $|\mathbb{Z}/p|=p$ and $ap$ is the number of nontrivial ramification groups. Because $p_\infty$ is the only ramified point, the above reduces to $(p-1)(ap)$ as all other points have trivial ramification groups. Thus the genus of $X^\bullet_{p,t}$ can be accurately calculated (using $ap=t+1$:
+Where $|\mathbb{Z}/p|=p$ and $ap$ is the number of nontrivial ramification groups. Because $P_\infty$ is the only ramified place, the above is simply $(p-1)(ap)$ as all other places have trivial ramification groups. Thus the genus of $X_{p,t}$ can be accurately calculated (using $ap=t+1$):
 $$
 2g_{X_{p,t}} -2= p(2g_{\mathbb{P}^1_{\mathbb{F}}} -2) - (p-1)(ap) \implies  g_{X_{p,t}} = \frac{-2p-(p-1)(t+1)+2}{2}=\frac{(p-1)(t+1)}{2}.
 $$
-This result can be confirmed using the standard Riemann-Hurwitz formula for the covering map $\phi:X_{p,t} \to \mathbb{P}_\mathbb{F}^1$ where $\phi(x,y)=x$ which is ramified when $x\in \mathbb{Z}/p$ and $y=0$ with ramification index $t$ not divisible by $p$.
+This result can be confirmed using the standard Riemann-Hurwitz formula. For the covering map $\phi:X_{p,t} \to \mathbb{A}_\mathbb{F}^1$ where $\phi(x,y)=x$ which is ramified when $x\in \mathbb{Z}/p$ and $y=0$ with ramification index $t=ap-1$ (not divisible by $p$):
 $$
 g_{X_{p,t}} = \frac{p(-2) + p(t-1) +2}{2} = \frac{(p-1)(t+1)}{2}.
 $$
 Which agrees with the previous computation.
+\section{Conclusion}
+This paper has left many topics unaddressed or merely referenced. Further there are some questions not encountered while studying for this paper. One natural question to ask: given a ramification group filtration, what kind of extensions yield such a filtration? Another question to consider is given the filtration of ramification groups, and the $\phi_{i+1}$ maps defined earlier, is there some cohomological algebra to study? Topics to study further are function field extensions, Weil differentials, and the different. 
+
 \clearpage
 %\nocite{*}
 \printbibliography
